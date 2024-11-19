@@ -255,16 +255,16 @@
   font: 500 13px/1 "Roboto", sans-serif;
 }
 .multi_step_form #msform #progressbar li:nth-child(1):before {
-  content: "\1F5B3";
+  content: "\1F6C8";
 }
 .multi_step_form #msform #progressbar li:nth-child(2):before {
-  content: "\1F58D";
+  content: "\1F6C8";
 }
 .multi_step_form #msform #progressbar li:nth-child(3):before {
-  content: "\1F5AA";
+  content: "\1F6C8";
 }
 .multi_step_form #msform #progressbar li:before {
-  content: "\2139";
+  content: "\1F6C8";
   font: normal normal normal 30px/50px Ionicons;
   width: 50px;
   height: 50px;

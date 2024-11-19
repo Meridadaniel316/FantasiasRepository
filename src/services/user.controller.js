@@ -178,9 +178,9 @@ const matricularNuevoEstudiante = async (req, res) => {
 
   console.log(newStudentMatriculado)
 
-  req.flash('message', 'EL SISTEMA SE ENCUENTRA EN CONSTRUCCIÓN, POR FAVOR PONERSE EN CONTACTO CON ADMINISTRACIÓN')
+  req.flash('message', 'USUARIO REGISTRADO CON EXITO')
 
-  return res.redirect('/matricula');
+  return res.redirect('/');
 };
 
 const searchregistrationinformation = async (req, res) => {
@@ -189,7 +189,6 @@ const searchregistrationinformation = async (req, res) => {
   req.flash("madreDocument", req.body.documentoMadre);
   req.flash("padreDocument", req.body.documentoPadre);
   req.flash("formulario", true);
-
   return res.redirect("/matricula");
 };
 
