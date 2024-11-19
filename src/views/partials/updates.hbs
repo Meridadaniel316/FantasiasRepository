@@ -1,0 +1,169 @@
+{{#if user.firststart}}
+<div class="modal fade" id="modalUpdatesDatosDashboard" tabindex="-1" role="dialog"
+    aria-labelledby="modalUpdatesDatosDashboardTitle" aria-hidden="true" style="overflow-y: scroll;">
+    <div class="modal-dialog modal-xl  modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title"><strong>Modificacion</strong> de datos</h5>
+            </div>
+            <form action="/update/signup" method="post">
+                <div class="modal-body py-2">
+                    <input name="id" class="form-control" value="{{user._id}}" type="hidden" readonly>
+                    <div class="d-block main-content">
+                        <div class="form-inline">
+
+                            <div class="form-group"><label for="exampleInputName2"
+                                    class="pr-1  form-control-label">Nombres</label><input type="text" name="name"
+                                    value="{{#if message.name}}{{message.name}}{{else}}{{user.name}}{{/if}}"
+                                    placeholder="Ingrese los nombres" required="" class="form-control">
+                            </div>
+                            <div class="form-group mx-2 my-2"><label
+                                    class="px-1  form-control-label">Apellidos</label><input type="text"
+                                    value="{{#if message.lastname}}{{message.lastname}}{{else}}{{user.lastname}}{{/if}}"
+                                    placeholder="Ingrese los apellidos" name="lastname" class="form-control"></div>
+                            <div class="form-group mx-2 my-2"><label class="px-1  form-control-label">Correo
+                                    electronico</label><input type="email" name="email"
+                                    value="{{#if message.email}}{{message.email}}{{else}}{{user.email}}{{/if}}"
+                                    placeholder="Ingrese un correo electronico" required="" class="form-control"
+                                    disabled></div>
+                            <div class="form-group mx-2 my-2"><label class="px-1  form-control-label">Nombre de
+                                    usuario</label><input type="text" placeholder="Ingrese un nombre de usuario"
+                                    name="username" required=""
+                                    value="{{#if message.username}}{{message.username}}{{else}}{{user.username}}{{/if}}"
+                                    class="form-control"></div>
+                            <div class="form-group mx-2 my-2"><label for="select"
+                                    class="px-1  form-control-label">Genero</label>
+                                <select name="genero" class="form-control">
+                                    {{#if message.genero}}
+                                    <option selected disabled>Seleccionar un genero</option>
+                                    <option {{#xif expected='Masculino' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Masculino">Masculino</option>
+                                    <option {{#xif expected='Femenino' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Femenino">Femenino</option>
+                                    <option {{#xif expected='Otro' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Otro">Otro</option>
+                                    {{else}}
+                                    {{#xif expected='Desconocido' expression='==' val=user.genero}}
+                                    <option selected disabled>Seleccionar un genero</option>
+                                    <option {{#xif expected='Masculino' expression='==' val=user.genero}} selected
+                                        {{/xif}} value="Masculino">Masculino</option>
+                                    <option {{#xif expected='Femenino' expression='==' val=user.genero}} selected
+                                        {{/xif}} value="Femenino">Femenino</option>
+                                    <option {{#xif expected='Otro' expression='==' val=user.genero}} selected {{/xif}}
+                                        value="Otro">Otro</option>
+
+                                    {{else}}
+                                    <option disabled>Seleccionar un genero</option>
+                                    <option {{#xif expected='Masculino' expression='==' val=user.genero}} selected
+                                        {{/xif}} value="Masculino">Masculino</option>
+                                    <option {{#xif expected='Femenino' expression='==' val=user.genero}} selected
+                                        {{/xif}} value="Femenino">Femenino</option>
+                                    <option {{#xif expected='Otro' expression='==' val=user.genero}} selected {{/xif}}
+                                        value="Otro">Otro</option>
+                                    {{/xif}}
+                                    {{/if}}
+                                </select>
+                            </div>
+                            <div class="form-group mx-2 my-2"><label
+                                    class="px-1  form-control-label">Nacimiento</label><input type="date"
+                                    name="nacimiento" placeholder="Fecha de nacimiento"
+                                    value="{{#if message.nacimiento}}{{message.nacimiento}}{{else}}{{user.nacimiento}}{{/if}}"
+                                    class="form-control "></div>
+                            <div class="form-group mx-2 my-2"><label
+                                    class="px-1  form-control-label">Num.Celular</label><input type="text" name="celular"
+                                    value="{{#if message.celular}}{{message.celular}}{{else}}{{#if user.celular}}{{user.celular}}{{else}}{{/if}}{{/if}}"
+                                    placeholder="Ingrese un numero de celular" class="form-control">
+                            </div>
+                            <div class="form-group mx-2 my-2"><label for="select"
+                                    class="px-1  form-control-label">T.documento</label>
+                                <select name="tipodocumento" class="form-control ">
+                                    {{#if message.tdocumento}}
+                                    <option disabled>Seleccionar un documento</option>
+                                    <option {{#xif expected='CC' expression='==' val=message.tdocumento}} selected
+                                        {{/xif}} value="CC">CC</option>
+                                    <option {{#xif expected='TI' expression='==' val=message.tdocumento}} selected
+                                        {{/xif}} value="TI">TI</option>
+                                    <option {{#xif expected='Pasaporte' expression='==' val=message.tdocumento}}
+                                        selected {{/xif}} value="Pasaporte">Pasaporte</option>
+                                    {{else}}
+                                    {{#if user.tipodocumento}}
+                                    <option disabled>Seleccionar un documento</option>
+                                    <option {{#xif expected='CC' expression='==' val=user.tipodocumento}} selected {{/xif}}
+                                        value="CC">CC</option>
+                                    <option {{#xif expected='TI' expression='==' val=user.tipodocumento}} selected {{/xif}}
+                                        value="TI">TI</option>
+                                    <option {{#xif expected='Pasaporte' expression='==' val=user.tipodocumento}} selected
+                                        {{/xif}} value="Pasaporte">Pasaporte</option>
+
+                                    {{else}}
+                                    <option selected disabled>Seleccionar un documento</option>
+                                    <option {{#xif expected='CC' expression='==' val=user.tipodocumento}} selected {{/xif}}
+                                        value="CC">CC</option>
+                                    <option {{#xif expected='TI' expression='==' val=user.tipodocumento}} selected {{/xif}}
+                                        value="TI">TI</option>
+                                    <option {{#xif expected='Pasaporte' expression='==' val=user.tipodocumento}} selected
+                                        {{/xif}} value="Pasaporte">Pasaporte</option>
+
+                                    {{/if}}
+                                    {{/if}}
+                                </select>
+                            </div>
+                            <div class="form-group mx-2 my-2"><label
+                                    class="px-1  form-control-label">N.documento</label><input type="text"
+                                    name="documento" placeholder="Ingrese un documento"
+                                    value="{{#if message.documento}}{{message.documento}}{{else}}{{#if user.documento}}{{user.documento}}{{else}}{{/if}}{{/if}}"
+                                    class="form-control"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger btn-sm mx-5" title="Reiniciar valores">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                            <path
+                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                        </svg>
+                    </button>
+                    <button type="submit" class="btn btn-warning" title="Actualizar">
+                        <i class="fa fa-dot-circle-o"></i> Actualizar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{#if user.update}}
+<!-- Modal -->
+<div class="modal fade" id="modalUpdatesDashboard" tabindex="-1" role="dialog"
+    aria-labelledby="modalUpdatesDashboardTitle" aria-hidden="true">
+    <div class="modal-dialog modal-md  modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-body py-0">
+
+
+                <div class="d-block main-content">
+                    <img src="../fantasiastyles/images/undraw_updated_rr85.svg" alt="Image" class="img-fluid"
+                        style="background-color: #b2fcff;">
+                    <div class="content-text p-4">
+
+                        <h3 class="mb-4">¡Nueva actualización!</h3>
+                        <p class="mb-4">Hola <b>{{user.name}} {{user.lastname}}</b>, actualmente la aplicación se ha
+                            actualizado, si quieres saber mas información sobre los cambios, dale al boton "Ver mas
+                            información" de lo contrario ignora este mensaje.</p>
+                        <div class="d-flex">
+                            <div class="ml-auto">
+                                <a href="#" class="btn btn-link" data-dismiss="modal">Cerrar</a>
+                                <a href="#" class="btn btn-primary px-4 disabled">Ver mas informacion</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

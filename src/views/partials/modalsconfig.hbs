@@ -1,0 +1,183 @@
+<script type="text/javascript">
+    function validar(form) {
+        
+        const sentence = form.sentence.value.trimStart()
+        const sentenceAuthor = form.sentenceAuthor.value.trimStart()
+        if (sentence) {
+            form.sentenceAuthor.disabled = false;
+            if (sentenceAuthor.length > 0) {
+                form.sentenceAuthor.classList.remove("is-invalid")
+                form.butt.disabled = false
+            } else {
+                form.sentence.classList.remove("is-invalid")
+                form.sentenceAuthor.classList.add("is-invalid")
+                form.butt.disabled = true
+            }
+        } else {
+            form.sentence.classList.remove("is-invalid")
+            form.sentenceAuthor.classList.remove("is-invalid")
+            form.sentenceAuthor.disabled = true
+            form.sentenceAuthor.value = ''
+        }
+
+        if (sentence && sentenceAuthor) {
+            form.sentenceAuthor.classList.remove("is-invalid")
+            form.sentence.classList.remove("is-invalid")
+            form.butt.disabled = false
+        }
+
+    }
+</script>
+
+{{#each configtext}}
+
+{{!-- MODAL EDITAR PROMOCIONES --}}
+
+<div class="modal fade" id="modalEditPromociones" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar promoción</h5> {{#if
+                promotion}}<a href="/admin/upload/promotionDesactive"
+                    class="btn btn-success btn-sm">Activada</a>{{else}}<a href="/admin/upload/promotionActive"
+                    class="btn btn-danger btn-sm">Desactivada</a>{{/if}}
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="was-validated" action="/admin/upload/promotion" method="POST">
+                    <div class="form-group">
+                        <span>Estado de la promoción:</span>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="customControlValidation2" value=true
+                                name="promotion" required {{#if promotion}}checked{{/if}}>
+                            <label class="custom-control-label" for="customControlValidation2">Activada</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                            <input type="radio" value=false class="custom-control-input" id="customControlValidation3"
+                                name="promotion" required {{#if promotion}}{{else}}checked{{/if}}>
+                            <label class="custom-control-label" for="customControlValidation3">Desactivada</label>
+                            <div class="invalid-feedback">Porfavor selecciona un estado valido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="floatingTextarea2">Descripcion (min: 0 - max: 110)</label>
+                        <textarea class="form-control" name="promotiondescription"
+                            placeholder="Escribe una breve descripción para el cupon de descuento" minlength="0"
+                            maxlength="110" id="floatingTextarea2"
+                            style="height: 100px">{{promotiondescription}}</textarea>
+                        <div class="invalid-feedback">Porfavor selecciona una descripción valida</div>
+                    </div>
+                    <div class="form-group">
+                        <span>Numero de descuento:</span>
+                        <input name="discountpromotion" type="number" class="form-control" value={{discountpromotion}}
+                            min="1" max="100" placeholder="Cantidad de descuento" aria-describedby="basic-addon1"
+                            required>
+                        <div class="invalid-feedback">Porfavor selecciona un numero de descuento valido</div>
+                    </div>
+                    <span>Imagen de la promoción:</span>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="promotionimage" accept="image/*"
+                            id="validatedCustomFile" disabled>
+                        <label class="custom-file-label" for="validatedCustomFile">Selecciona un archivo...</label>
+                        <div class="invalid-feedback">Porfavor selecciona un archivo valido</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger btn-sm mx-5" title="Reiniciar variables"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                <path
+                                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                            </svg></button>
+                        <a href="#" class="btn btn-link" data-dismiss="modal" title="Cerrar pestaña">Cerrar</a>
+                        <button type="submit" class="btn btn-primary" title="Actualizar"> Actualizar </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- MODAL EDITAR PAGINA INICIO --}}
+
+<div class="modal fade" id="modalEditPageHome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Actualización {{titleGeneral}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/upload/configHomePage/{{_id}}" method="POST">
+                    <input name="id" class="form-control" value="{{_id}}" type="hidden" readonly>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Slider
+                                #1</label></div>
+                        <div class="col-12 col-md-9"><textarea name="sliderOne" rows="3" placeholder="escribir aqui..."
+                                class="form-control">{{sliderOne}}</textarea></div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Slider
+                                #2</label></div>
+                        <div class="col-12 col-md-9"><textarea name="sliderTwo" rows="2" placeholder="escribir aqui..."
+                                class="form-control">{{sliderTwo}}</textarea></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Pequeña
+                                historia</label></div>
+                        <div class="col-12 col-md-9"><textarea name="littleStory" id="textareahomepage"
+                                placeholder="Escribe la historia del jardin..." rows="5"
+                                class="form-control">{{littleStory}}</textarea></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Frase
+                                corta</label></div>
+                        <div class="col-12 col-md-9"><textarea rows="2" id="sentence" name="sentence"
+                                placeholder="Escribir frase" class="form-control"
+                                onkeyup="validar(this.form)">{{sentence}}</textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Autor</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <textarea name="sentenceAuthor" rows="1" placeholder="Escribir autor de la frase"
+                                class="form-control" onkeyup="validar(this.form)"
+                                disabled="disabled">{{sentenceAuthor}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Información
+                                contacto</label></div>
+                        <div class="col-12 col-md-9"><textarea name="contactInformation" rows="1"
+                                placeholder="Escribir aqui..." class="form-control">{{contactInformation}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger btn-sm mx-5" title="Reiniciar variables"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                <path
+                                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                            </svg></button>
+                        <button type="reset" class="btn btn-link" data-dismiss="modal" title="Cerrar pestaña">Cerrar</button>
+                        <button type="submit" name="butt" class="btn btn-warning" title="Actualizar">
+                            actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

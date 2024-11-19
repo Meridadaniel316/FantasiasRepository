@@ -1,0 +1,108 @@
+<div class="text">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 350px;">
+            <h4 class="card-title mt-3 text-center">Editar producto</h4>
+            <h6 class="card-title mt-3 text-center">ID: {{product._id}}</h6>
+
+            <div class="container">
+                <img src="{{product.image}}" alt="">
+            </div>
+            <p class="divider-text">
+
+            </p>
+            <form action="/updateproduct/{{product._id}}" method="POST">
+                <div class="form-group input-group">
+                    <input name="token" class="form-control" value="{{user.token}}" type="hidden" readonly>
+                </div>
+                <div class="form-group input-group">
+                    <input name="id" class="form-control" value="{{product._id}}" type="text" readonly>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-sitemap"></i> </span>
+                    </div>
+                    <input name="name" class="form-control"
+                        value="{{#if message.message }}{{message.name}}{{else}}{{product.name}}{{/if}}"
+                        placeholder="Nombre del producto" type="text">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-text-width"></i> </span>
+                    </div>
+                    <textarea name="description" class="form-control" placeholder="Descripción del producto"
+                        type="text">{{#if message.message }}{{message.description}}{{else}}{{product.description}}{{/if}}</textarea>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-money-bill-alt"></i> </span>
+                    </div>
+                    <input name="price" class="form-control"
+                        value="{{#if message.message }}{{message.price}}{{else}}{{product.price}}{{/if}}"
+                        placeholder="Precio" type="number">
+                    <select class="input-group-text" id="category" name="category">
+                        <option value="{{#if message.message }}{{message.category}}{{else}}{{product.category}}{{/if}}"
+                            selected>{{#if message.message }}{{message.category}}{{else}}{{product.category}}{{/if}}
+                        </option>
+                        {{#if category}}
+                        {{#each category}}
+                        <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+                <div class="form-group input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-link"></i> </span>
+                    </div>
+                    <input name="image" class="form-control" value="{{#if message.message }}{{message.image}}{{else}}{{product.image}}{{/if}}"
+                        placeholder="Imagen URL (opcional)" type="text">
+                    <label class="input-group-text" for="inputGroupFile02">Browse</label>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" accept="image/*" class="form-control" id="inputGroupFile02" disabled>
+
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> editar producto </button>
+                </div>
+            </form>
+        </article>
+    </div>
+</div>
+{{!-- //ELIMINAR PRODUCTO --}}
+<div class="text">
+    <div class="card bg-light">
+        <article class="card-body mx-auto " style="max-width: 350px;">
+            <h4 class="card-title mt-3 text-center">Eliminar producto</h4>
+            <h6 class="card-title mt-3 text-center">ID: {{product._id}}</h6>
+
+            <div class="container">
+                <img src="{{product.image}}" alt="">
+            </div>
+            <h6 class="card-title mt-3 text-center"><b>Nombre:</b> {{product.name}}</h6>
+            <h6 class="card-title mt-3 text-center"><b>Precio:</b> ${{product.price}}</h6>
+            <h6 class="card-title mt-3 text-center"><b>Descripción:</b> {{product.description}}</h6>
+            <h6 class="card-title mt-3 text-center"><b>Categoría:</b> {{product.category}}</h6>
+            <h6 class="card-title mt-3 text-center">{{product.createdAt}}</h6>
+            <p class="divider-text">
+                <span class="bg-light">Eliminar producto</span>
+            </p>
+            <form action="/deleteproduct/{{product._id}}" method="POST">
+                <div class="form-group input-group">
+                    <input name="token" class="form-control" value="{{user.token}}" type="hidden" readonly>
+                </div>
+                <div class="form-group input-group">
+                    <input name="id" class="form-control" value="{{product._id}}" type="text" readonly>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger btn-block"> eliminar producto </button>
+                </div>
+            </form>
+
+        </article>
+    </div>
+</div>
+{{>reviewProduct}}
+{{!-- //VER PRODUCTO --}}

@@ -1,0 +1,42 @@
+{
+  "name": "petproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir build",
+    "dev": "nodemon src/index.js --exec babel-node",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "bcryptjs": "^2.4.3",
+    "connect-session": "0.0.1",
+    "express": "^4.19.2",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.2.0",
+    "firebase-admin": "^12.4.0",
+    "handlebars": "^4.7.8",
+    "handlebars-helpers": "^0.10.0",
+    "mongoose": "^8.5.4",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
+    "passport": "^0.7.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "sweetalert2": "^11.12.4",
+    "unique-names-generator": "^4.7.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.25.4"
+  }
+}

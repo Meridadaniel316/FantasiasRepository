@@ -1,0 +1,97 @@
+<div class="text">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <form action="/updatecategory/{{category._id}}" method="POST">
+                <div class="form-group input-group">
+                    <input name="token" class="form-control" value="{{user.token}}" type="hidden" readonly>
+                </div>
+                <div class="form-group input-group">
+                    <input name="id" class="form-control" value="{{category._id}}" type="text" readonly>
+                </div>
+                <h4 class="card-title mt-3 text-center"><i class="{{category.icon}}"></i>
+                    <p>{{category.name}}</p>
+                </h4>
+                <p class="divider-text">
+                    <span class="bg-light">{{category._id}}</span>
+                </p>
+                <h6 class="card-title mt-3 text-center"><b><u>Descripción:</u></b></h6>
+                <h6 class="card-title mt-3 text-center">{{category.description}}</h6>
+                <p class="divider-text"></p>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-sitemap"></i> </span>
+                    </div>
+                    <input name="name" class="form-control"
+                        value="{{#if message.message }}{{message.name}}{{else}}{{category.name}}{{/if}}"
+                        placeholder="Nombre de la categoria" type="text">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-moon"></i> </span>
+                    </div>
+                    <input name="icon" class="form-control"
+                        value="{{#if message.message }}{{message.icon}}{{else}}{{category.icon}}{{/if}}"
+                        placeholder="ICONO (opcional)" type="text">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-text-width"></i> </span>
+                    </div>
+                    <textarea name="description" class="form-control" placeholder="Descripción del producto"
+                        type="text">{{#if message.message }}{{message.description}}{{else}}{{category.description}}{{/if}}</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-warning btn-block"> editar categoria </button>
+            </form>
+        </article>
+    </div>
+</div>
+{{!-- //ELIMINAR PRODUCTO --}}
+<div class="text">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <form action="/deletecategory/{{category._id}}" method="POST">
+                <div class="form-group input-group">
+                    <input name="token" class="form-control" value="{{user.token}}" type="hidden" readonly>
+                </div>
+                <div class="form-group input-group">
+                    <input name="id" class="form-control" value="{{category._id}}" type="text" readonly>
+                </div>
+                <h4 class="card-title mt-3 text-center"><i class="{{category.icon}}"></i>
+                    <p>{{category.name}}</p>
+                </h4>
+                <p class="divider-text">
+                    <span class="bg-light">{{category._id}}</span>
+                </p>
+                <h6 class="card-title mt-3 text-center"><b><u>Descripción:</u></b></h6>
+                <h6 class="card-title mt-3 text-center">{{category.description}}</h6>
+                <p class="divider-text"></p>
+
+                <button type="submit" class="btn btn-danger btn-block"> eliminar categoria </button>
+            </form>
+        </article>
+    </div>
+</div>
+{{!-- //VER PRODUCTO --}}
+<a href="/category/{{category._id}}">
+    <div class="text">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 300px;">
+            <form action="/category/{{category._id}}" method="GET">
+                <h4 class="card-title mt-3 text-center"><i class="{{category.icon}}"></i>
+                    <p>{{category.name}}</p>
+                </h4>
+                <p class="divider-text">
+                    <span class="bg-light">{{category._id}}</span>
+                </p>
+                <h6 class="card-title mt-3 text-center"><b><u>Descripción:</u></b></h6>
+                <h6 class="card-title mt-3 text-center">{{category.description}}</h6>
+                <p class="divider-text"></p>
+                <button type="submit" class="btn btn-info btn-block"> ver categoria </button>
+
+            </form>
+        </article>
+    </div>
+</div>
+</a>

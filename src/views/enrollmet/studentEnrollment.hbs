@@ -1,0 +1,61 @@
+<!-- Start Multiform HTML -->
+<section class="multi_step_form">
+    <form action="/searchregistrationinformation" method="POST" id="msform">
+        <!-- Tittle -->
+        <div class="tittle">
+            <h2>{{pagename.title}} <b style="color: brown;">{{config.Name}}</b></h2>
+            <p>Donde el Amor es la base de la Educación</p>
+        </div>
+        <!-- progressbar -->
+        <ul id="progressbar">
+            <li class="active">Datos complementarios</li>
+            <li>Datos estudiante</li>
+            <li>Datos padre</li>
+            <li>Datos madre</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset>
+            <h3>¿Ya existes en la base de datos?</h3>
+            <h6>Por favor ingresa los siguientes datos para validar si tu usuario se encuentra en nuestra base de datos
+            </h6>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el nombre completo del estudiante</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" title="Ver informacion estudiante" disabled><i class="fa fa-eye"></i></button>
+                        <input type="text" name="nombreEstudiante" id="nombreEstudiante" class="form-control"
+                            placeholder="Nombre completo del estudiante">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el numero de documento del estudiante</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" title="Ver informacion estudiante" disabled><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="documentoEstudiante" id="documentoEstudiante" class="form-control"
+                            placeholder="Documento del estudiante">              
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el numero de documento de la madre</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" title="Ver informacion madre" disabled><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="documentoMadre" class="form-control"
+                            placeholder="Documento de la madre">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el numero de documento del padre</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" title="Ver informacion padre" disabled><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="documentoPadre" class="form-control" placeholder="Documento del padre">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="action-button">Continuar</button>
+        </fieldset>
+
+    </form>
+</section>

@@ -1,0 +1,45 @@
+{{#each configtext}}
+{{#if promotion}}
+<div class="modal fade" id="modalPromociones" tabindex="-1" role="dialog" aria-labelledby="modalPromocionesTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center"
+                    data-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                        <path fill-rule="evenodd"
+                            d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-md-6 d-flex">
+                    <div class="modal-body p-5 img d-flex"
+                        style=" background-image: url({{promotionimage}});">
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div class="modal-body p-5 d-flex align-items-center">
+                        <div class="text w-100 text-center py-5">
+                            <h1>HASTA un</h1>
+                            <h2 class="mb-0">{{discountpromotion}}<span>%</span> menos</h2>
+                            <h4 class="mb-4">{{promotiondescription}}</h4>
+                            <form action="#" class="code-form">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control" placeholder="Ingresar codigo">
+                                </div>
+                            </form>
+                            <a href="#" class="btn btn-primary d-block py-3">inscripción</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{/each}}

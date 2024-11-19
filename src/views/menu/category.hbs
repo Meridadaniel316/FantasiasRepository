@@ -1,0 +1,68 @@
+<!-- Start All Pages -->
+	<div class="all-page-title page-breadcrumb">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>{{categories.name}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End All Pages -->
+	
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>{{categories.name}}</h2>
+						<p>{{categories.description}}</p>
+					</div>
+				</div>
+			</div>
+			{{#if pagename.category}}
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="special-menu text-center">
+						<div class="button-group filter-button-group">
+							<button class="active" data-filter="*">Todo</button>
+                            {{#if category}}
+                            {{#each category}}
+							<button data-filter=".{{name}}">{{name}}</button>
+                            {{/each}}
+                            {{/if}}
+                        </div>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+			<div class="row special-list">
+				{{#if productos}}
+				{{#each productos}}
+				<div class="col-lg-4 col-md-6 special-grid {{category}}">
+					<div class="gallery-single fix">
+						<img src="{{image}}" class="img-fluid" alt="Image">
+						<a href="/product/{{id}}">
+							<div class="why-text">
+								<h4>{{name}}</h4>
+								<p>{{description}}</p>
+								<h5> ${{price}}</h5>
+							</div>
+						</a>
+					</div>
+				</div>
+				{{/each}}
+				{{else}}
+				<div class="heading-title text-center" >
+					<p style="color: red;">**No se hayaron productos en la categoria: {{categories.name}}</p>
+				</div>	
+				{{/if}}	
+				
+			</div>	
+		</div>
+	</div>
+	<!-- End Menu -->
+	
+	{{>qt}}
+	{{>review}}

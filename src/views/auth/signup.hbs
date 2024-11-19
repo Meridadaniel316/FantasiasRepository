@@ -1,0 +1,202 @@
+<div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 900px;">
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+        <p class="text-center">Get started with your free account</p>
+        <p>
+            <button class="btn btn-block btn-info" disabled> <i class="fab fa-facebook-f"></i>   Login via
+                facebook</button>
+            <a href="/signin/google" class="btn btn-block btn-danger"> <i class="far fa-envelope"></i>   Login via
+                Gmail</a>
+        </p>
+        <p class="divider-text">
+            <span class="bg-light">OR</span>
+        </p>
+
+        <form action="/signup" id="formulario" method="POST">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="input-group row">
+                            <div class="col-sm mt-1">
+
+                                <label for="floatingInput">Nombres</label>
+                                <input type="text" name="name" value="{{message.name}}"
+                                    class="form-control" placeholder="Ingrese los nombres">
+                            </div>
+                            <div class="col-sm mt-1">
+                                <label for="floatingInput">Apellidos</label>
+                                <input type="text" name="lastname" value="{{message.lastname}}"
+                                    class="form-control"
+                                    placeholder="Ingrese los apellidos">
+                            </div>
+                        </div>
+                        <div class="form-group input-group row">
+                            <div class="col-sm mt-1">
+                                <label for="floatingInput">Genero</label>
+                                <select class="form-control form-select" name="genero" value="{{message.genero}}"
+                                    id="inputGroupSelect02">
+
+                                    {{#if message.genero}}
+                                    <option disabled>Seleccionar un genero</option>
+                                    <option {{#xif expected='Masculino' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Masculino">Masculino</option>
+                                    <option {{#xif expected='Femenino' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Femenino">Femenino</option>
+                                    <option {{#xif expected='Otro' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Otro">Otro</option>
+
+                                    {{else}}
+                                    <option selected disabled>Seleccionar un genero</option>
+                                    <option {{#xif expected='Masculino' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Masculino">Masculino</option>
+                                    <option {{#xif expected='Femenino' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Femenino">Femenino</option>
+                                    <option {{#xif expected='Otro' expression='==' val=message.genero}} selected
+                                        {{/xif}} value="Otro">Otro</option>
+                                    {{/if}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row input-group">
+                            <div class="col-sm mt-1">
+                                <label for="floatingInput">Tipo documento</label>
+                                <select class="form-control form-select" name="tipodocumento"
+                                    value="{{message.tdocumento}}" id="tipodocumento">
+
+                                    {{#if message.tdocumento}}
+                                    <option disabled>Seleccionar un documento</option>
+                                    <option {{#xif expected='CC' expression='==' val=message.tdocumento}} selected
+                                        {{/xif}} value="CC">CC</option>
+                                    <option {{#xif expected='TI' expression='==' val=message.tdocumento}} selected
+                                        {{/xif}} value="TI">TI</option>
+                                    <option {{#xif expected='Pasaporte' expression='==' val=message.tdocumento}}
+                                        selected {{/xif}} value="Pasaporte">Pasaporte</option>
+
+                                    {{else}}
+                                    <option selected disabled>Seleccionar un documento</option>
+                                    <option {{#xif expected='CC' expression='==' val=message.tdocumento}} selected
+                                        {{/xif}} value="CC">CC</option>
+                                    <option {{#xif expected='TI' expression='==' val=message.tdocumento}} selected
+                                        {{/xif}} value="TI">TI</option>
+                                    <option {{#xif expected='Pasaporte' expression='==' val=message.tdocumento}}
+                                        selected {{/xif}} value="Pasaporte">Pasaporte</option>
+
+                                    {{/if}}
+                                </select>
+                            </div>
+                            <div class="col-sm mt-1">
+                                <label for="floatingInput">Documento</label>
+                                <input name="documento" class="form-control"
+                                    value="{{message.documento}}" placeholder="Ingrese un documento" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm mt-1">
+                                <label for="floatingInput">Numero telefonico</label>
+                                <input name="tel" class="form-control" 
+                                    value="{{message.tel}}" placeholder="Ingrese un numero telefonico" maxlength="10"
+                                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                    type="text">
+                            </div>
+                            <div class="col-sm mt-1">
+                                <label for="floatingInput">Fecha de nacimiento</label>
+                                <input type="date" name="nacimiento"
+                                    value="{{message.nacimiento}}" placeholder="Fecha de nacimiento"
+                                    class="form-control" name="nacimiento">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <label for="floatingInput">Nombre de usuario</label>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+                            </div>
+                            <input name="username" class="form-control"
+                                value="{{message.username}}" placeholder="Ingrese un nombre de usuario" type="text">
+                        </div>
+                        <label for="floatingInput">Correo electronico</label>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                            </div>
+                            <input name="email" id="email" class="form-control"
+                                value="{{message.email}}" placeholder="Ingrese un correo electronico" type="email"
+                                autocomplete="username">
+                        </div>
+                        <label for="floatingInput">Contraseña</label>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input name="password" id="password" class="form-control"
+                                placeholder="Crea una contraseña" type="password" autocomplete="new-password">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span
+                                        class="fa fa-eye-slash icon"></span> </button>
+                            </div>
+                        </div>
+
+                        <label for="floatingInput">Confirmar contraseña</label>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input name="passwordconfirmed" id="passwordconfirmed"
+                                class="form-control" placeholder="Confirmar contraseña" type="password"
+                                autocomplete="new-password">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="mostrarPasswordConfirmed()">
+                                    <span class="fa fa-eye-slash iconconfirmed"></span> </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <small id="messageError" class="help-block form-text mb-1" style="color: red;"></small>
+            <p class="divider-text">
+                <span></span>
+            </p>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary btn-block"> Crear cuenta </button>
+            </div>
+            <p class="text-center">¿Ya tienes una cuenta? <a href="/signin">Log In</a> </p>
+        </form>
+    </article>
+</div>
+
+<script type="text/javascript">
+    const password = document.getElementById('password');
+    const passwordconfirmed = document.getElementById('passwordconfirmed');
+    const formulario = document.getElementById('formulario');
+    const message = document.getElementById('messageError');
+    const messageErrorConfirmed = document.getElementById('messageErrorConfirmed');
+    formulario.addEventListener('keyup', function (event) {
+        if (event.getModifierState('CapsLock')) {
+            message.innerText = '*Las mayusculas se encuentran activadas'
+
+        } else {
+            message.innerText = ''
+        }
+    });
+
+    function mostrarPassword() {
+        if (password.type == "password") {
+            password.type = "text";
+            $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+        } else {
+            password.type = "password";
+            $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+        }
+    }
+    function mostrarPasswordConfirmed() {
+        if (passwordconfirmed.type == "password") {
+            passwordconfirmed.type = "text";
+            $('.iconconfirmed').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+        } else {
+            passwordconfirmed.type = "password";
+            $('.iconconfirmed').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+        }
+    }
+</script>

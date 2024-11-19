@@ -1,0 +1,18 @@
+{{#if product}}
+{{#each product}}
+<a href="/edit-product/{{_id}}">
+    <div class="text">
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 350px;">
+                <h4 class="card-title mt-3 text-center">{{name}}</h4>
+                <h5 class="card-title mt-3 text-center"><b>Categoría:</b> {{category}}</h5>
+                <h6 class="card-title mt-3 text-center">ID: {{_id}}</h6>
+                <h6 class="card-title mt-3 text-center"><b>Precio:</b> ${{price}}</h6>
+                <h6 class="card-title mt-3 text-center"><b>Descripción:</b> {{description}}</h6>
+                <img src="{{image}}" alt="">
+            </article>
+        </div>
+    </div>
+</a>
+{{/each}}
+{{/if}}

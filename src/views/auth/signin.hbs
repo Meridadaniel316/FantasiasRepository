@@ -1,0 +1,71 @@
+<div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Inicia sesion</h4>
+        <p class="text-center">Get started with your free account</p>
+        <p>
+            <button class="btn btn-block btn-info" disabled> <i class="fab fa-facebook-f"></i>   Login via
+                facebook</button>
+            <a href="/signin/google" class="btn btn-block btn-danger"> <i class="far fa-envelope"></i>   Login via
+                Gmail</a>
+        </p>
+        <p class="divider-text">
+            <span class="bg-light">OR</span>
+        </p>
+        <form action="/signin" id="formulario" method="POST">
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input name="email" id="email" onkeyup="maysig(this.form)" class="form-control"
+                    value="{{message.email}}" placeholder="Correo electronico" type="email"
+                    autocomplete="username email">
+            </div>
+            <small id="messageError" class="help-block form-text mb-1" style="color: red;"></small>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input type="password" id="password" name="password" onkeyup="maysig(this.form)" class="form-control"
+                    placeholder="Crea una contraseña" autocomplete="current-password">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span
+                            class="fa fa-eye-slash icon"></span> </button>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Iniciar sesion </button>
+            </div>
+            <p class="text-center">¿No tienes cuenta? <a href="/signup">crea una ahora</a> </p>
+        </form>
+    </article>
+</div>
+<script type="text/javascript">
+    const password = document.getElementById('password');
+    const formulario = document.getElementById('formulario');
+    const message = document.getElementById('messageError');
+
+    function maysig(form) {
+        var pass = form.password
+        if (form.email) {
+            message.innerText = ''
+        }
+        pass.addEventListener('keyup', function (event) {
+            if (event.getModifierState('CapsLock')) {
+                message.innerText = '*Las mayusculas se encuentran activadas'
+            } else {
+                message.innerText = ''
+            }
+        });
+    }
+    function mostrarPassword() {
+        if (password.type == "password") {
+            password.type = "text";
+            $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+        } else {
+            password.type = "password";
+            $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+        }
+    }
+</script>

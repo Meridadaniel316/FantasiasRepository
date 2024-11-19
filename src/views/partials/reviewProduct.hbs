@@ -1,0 +1,30 @@
+{{#if message.message}}
+<div class="text">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 350px;">
+            <h5 class="card-title mt-3 text-center"><u>review</u></h5>
+            <h6 class="card-title mt-3 text-center">{{product._id}}</h6>
+
+            <div class="container">
+                <img src="{{#if message.image }}{{message.image}}{{else}}{{config.ImageUndefined}}{{/if}}" alt="">
+            </div>
+            <h6 class="card-title mt-3 text-center">
+                {{#if message.name }}<p><b style="color: brown;">Nombre:</b> {{message.name}}</p>{{/if}}
+                {{#if message.price }}<p><b style="color: brown;">precio:</b> ${{message.price}}</p>{{/if}}
+                {{#if message.description }}<p><b style="color: brown;">Descripción:</b> {{message.description}}</p>{{/if}}
+                {{#if message.category }}<p><b style="color: brown;">Categoria:</b> {{message.category}}</p>{{/if}}
+            </h6>
+            <p class="divider-text">
+                <span class="bg-light">review product</span>
+            </p>
+            <form>
+                <div class="form-group">
+                    <a href="/admin/products" class="btn btn-danger btn-block"> cancelar </a>
+                </div>
+            </form>
+
+        </article>
+    </div>
+
+</div>
+{{/if}}

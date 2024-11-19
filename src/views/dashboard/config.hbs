@@ -1,0 +1,65 @@
+
+<div class="text">
+</div>
+<div class="row mx-1 mb-2">
+  <div class="col-sm-6 my-1">
+    <div class="card" style="height: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">Modificación de comentarios en la pagina de inicio</h5>
+        <p class="card-text">En la pagina de inicio hay una serie de comentarios, como descripciones, historias y breves
+          comentarios.</p>
+          <a type="button" class="btn btn-warning mt-3" id="botoneditPageHome">Modificar</a>
+      </div>
+    </div>
+  </div>
+  {{#each configtext}}
+  <div class="col-sm-6 my-1">
+    <div class="card" style="height: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">{{#if promotion}}DESHABILITAR{{else}}HABILITAR{{/if}} PROMOCION</h5>
+        <p class="card-text">Crea y cancela promociones del negocio, en cuestion de segundos. actualmente las
+          promociones estan {{#if promotion}}<b style="color: green;">activadas</b>{{else}}<b
+            style="color: red;">desactivadas</b>{{/if}}</p>
+        {{#if promotion}}
+
+        <a type="button" class="btn btn-danger mt-3" id="botonpromocionedit">Deshabilitar ahora</a>
+        {{else}}
+        <a type="button" class="btn btn-success mt-3" id="botonpromocionedit">Habilitar ahora</a>
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+<div class="row mx-1 mb-2">
+  <div class="col-sm-4 my-1">
+    <div class="card" style="height: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">Permisos de usuario</h5>
+        <p class="card-text">Modificación de que roles pueden ingresar a ciertas sesiones del dashboard.</p>
+        <a href="#" class="btn btn-danger disabled">Ver permisos</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 my-1">
+    <div class="card" style="height: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">Usuarios</h5>
+        <p class="card-text">Lista de usuarios registrados en el sitio, funcional para modificar la información.</p>
+        <a href="/admin/users" class="btn btn-info">Ver usuarios</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 my-1">
+    <div class="card" style="height: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">Productos</h5>
+        <p class="card-text">Creación de nuevos productos y categorias para el negocio.</p>
+        <button id="questionproduct" class="btn btn-success ">Productos</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="animated fadeIn">
+

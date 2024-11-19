@@ -1,0 +1,47 @@
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Bienvenid{{#xif expected='Femenino' expression='==='
+            val=user.genero}}a{{else}}o{{/xif}}
+
+            {{#each rolUser}}
+            {{#xif expected='user' expression='==' val=name}}<b style="color:blue">usuario</b>{{/xif}}
+            {{#xif expected='moderator' expression='==' val=name}}<b style="color:orange">moderador</b>{{/xif}}
+            {{#xif expected='admin' expression='==' val=name}}<b style="color:red">administrador</b>{{/xif}}
+            {{/each}}
+
+            {{user.name}} {{user.lastname}}</h1>
+        <p class="col-md-8 fs-4">
+
+            {{#each rolUser}}
+            {{#xif expected='user' expression='==' val=name}}Bienvenido usuario a el dashboard de {{config.Name}},
+            en este lugar podras crear, editar y eliminar fotos acerca del jardín, recuerda que para solicitar mas
+            permisos debes hablar con administración.{{/xif}}
+            {{#xif expected='moderator' expression='==' val=name}}Bienvenido moderador a el dashboard de
+            {{config.Name}}, en este lugar podras crear, editar y eliminar fotos acerca del jardín, recuerda que
+            para solicitar mas permisos debes hablar con administración.{{/xif}}
+            {{#xif expected='admin' expression='==' val=name}}Bienvenido Administrador a el dashboard de
+            {{config.Name}}, en este lugar podras crear, editar y eliminar fotos, usuarios, productos acerca del
+            jardín, tienes acceso a todas las configuraciones del sitio, espero y que tengas una buena
+            estancia..{{/xif}}
+            {{/each}}
+
+        </p>
+
+        <p>
+
+        </p>
+
+        {{#each rolUser}}
+        {{#xif expected='user' expression='==' val=name}}
+
+        {{/xif}}
+        {{#xif expected='moderator' expression='==' val=name}}
+
+        {{/xif}}
+        {{#xif expected='admin' expression='==' val=name}}
+        <a href="/admin/config" class="btn btn-primary btn-lg" type="button">Ir a las configuraciones</a>
+        {{/xif}}
+        {{/each}}
+
+    </div>
+</div>

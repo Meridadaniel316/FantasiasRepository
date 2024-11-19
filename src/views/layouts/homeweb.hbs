@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><!-- Basic -->
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+	<title>{{pagename.title}} - Donde el Amor es la base de la Educación</title> 
+    <meta name="keywords" content="envigado, jardin, prescolar, fantasias, infantil, niños, ninos, medellin, sabaneta, itagui, antillas, trianon, miprescolar">
+    <meta name="description" content="Campestre - amplias zonas verdes y granja especial para que los niños integren su educación con la naturaleza">
+    <meta name="author" content="Janeth cristina ambra merida">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../fantasiastyles/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../fantasiastyles/css/bootstrap.min.css">    
+	<!-- Site CSS -->
+    <link rel="stylesheet" href="../fantasiastyles/css/style.css">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../fantasiastyles/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../fantasiastyles/css/custom.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<style>
+    .top-navbar .navbar-light .navbar-nav .nav-item.{{pagename.name}} .nav-link{
+	background: #0b8db5;
+	color: #ffffff;
+	border-radius: 4px;
+} 
+
+	.disabled {
+	cursor: not-allowed;
+ 	pointer-events: none;
+    opacity:0.3;
+}
+</style>
+
+<body>
+	<!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			
+			<div class="container">
+				<a class="navbar-brand" href="/">
+					<img  src="../fantasiastyles/images/fantasias_logo.png" style="max-width: 150px;" alt="" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item home"><a class="nav-link" href="/">Inicio</a></li>
+						<li class="nav-item galeria disabled" ><a class="nav-link" href="/galeria">Galeria</a></li>
+						{{#if products}}
+						<li class="nav-item dropdown category">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Categorias</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								{{#if category}}
+								{{#each category}}
+								<a class="dropdown-item" href="/category/{{id}}">{{name}}</a>
+								{{/each}}
+								{{/if}}
+							</div>
+						</li>
+						{{else}}
+						<li class="nav-item dropdown disabled">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Categorias</a>
+						</li>												
+						{{/if}}
+						
+						<li class="nav-item disabled"><a class="nav-link" href="/contact">Contacto</a></li>
+						{{#if user}}
+						<li class="nav-item "><a class="nav-link" href="/dashboard">IR A DASHBOARD</a></li>
+						<li class="nav-item "><a class="nav-link" href="/logout">Logout</a></li>
+						{{else}}
+						<li class="nav-item "><a class="nav-link" href="/signin">Login/Register</a></li>
+						{{/if}}
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+	
+	{{{body}}}
+	
+	<!-- Start Footer -->
+	<footer class="footer-area bg-f">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<h3>Nuestros productos:</h3>
+					{{#if products}}
+					<ol>
+						{{#if category}}
+						{{#each category}}
+						<li><a href="/category/{{id}}"><p>{{name}}</p></a></li>
+						{{/each}}
+						{{/if}}
+					</ol>
+					{{else}}
+					<ol>
+						<li>No se hayaron productos en la base de datos</li>
+					</ol>
+					{{/if}}
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<h3>Horarios de atención:</h3>
+					
+					<p><span class="text-color">Lunes a viernes:</span> 7:00 am - 6:15 pm</p>
+					<p><span class="text-color">Sabados y domingos:</span> No hay servicio</p>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<h3>Contactanos</h3>
+					<p class="lead">{{config.Adress}}</p>
+					<p class="lead"><a href="#">{{config.Tel}}</a></p>
+					<p><a href="#"> {{config.Email}}</a></p>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<h3>Subscribete</h3>
+					<div class="subscribe_form">
+						<form class="subscribe_form">
+							<input name="email" id="subs-email" class="form_input" placeholder="Dirección de correo electronico" type="email">
+							<button type="submit" class="submit">SUBSCRIBETE</button>
+							<div class="clearfix"></div>
+						</form>
+					</div>
+					<ul class="list-inline f-social">
+						<li class="list-inline-item"><a href="{{config.Facebook}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li class="list-inline-item"><a href="{{config.Web}}" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
+						<li class="list-inline-item"><a href="{{config.Instagram}}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	<!-- End Footer -->
+	
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+	<!-- ALL JS FILES -->
+	<script src="../fantasiastyles/js/jquery-3.2.1.min.js"></script>
+	<script src="../fantasiastyles/js/popper.min.js"></script>
+	<script src="../fantasiastyles/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	<script src="../fantasiastyles/js/jquery.superslides.min.js"></script>
+	<script src="../fantasiastyles/js/images-loded.min.js"></script>
+	<script src="../fantasiastyles/js/isotope.min.js"></script>
+	<script src="../fantasiastyles/js/baguetteBox.min.js"></script>
+	<script src="../fantasiastyles/js/form-validator.min.js"></script>
+    <script src="../fantasiastyles/js/contact-form-script.js"></script>
+    <script src="../fantasiastyles/js/custom.js"></script>
+</body>
+</html>

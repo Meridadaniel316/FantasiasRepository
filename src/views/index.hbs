@@ -1,0 +1,221 @@
+<!-- Start slides -->
+<div id="slides" class="cover-slides">
+	<ul class="slides-container">
+		<li class="text-center">
+			<img src="../fantasiastyles/images/fantasias_slider.jpg" alt="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="m-b-20"><strong>Bienvenid{{#xif expected='Femenino' expression='==='
+								val=user.genero}}a{{else}}o{{/xif}} {{user.username}} al <br> centro infantil
+								fantasias</strong></h1>
+						<p class="m-b-40">{{#each configtext}}{{sliderOne}}{{/each}}</p>
+						<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="/reservation">Inscripción</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="text-center">
+			<img src="../fantasiastyles/images/fantasias_slider1.gif" alt="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="m-b-20"><strong>Bienvenid{{#xif expected='Femenino' expression='==='
+								val=user.genero}}a{{else}}o{{/xif}} {{user.username}} al <br> centro infantil
+								fantasias</strong></h1>
+						<p class="m-b-40">{{#each configtext}}{{sliderTwo}}{{/each}}</p>
+						<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="/reservation">Reservar</a></p>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="slides-navigation">
+		<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+		<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+	</div>
+</div>
+<!-- End slides -->
+{{#if configtext}}
+<!-- Start About -->
+<div class="about-section-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<img src="../fantasiastyles/images/fantasias_about-img.jpg" alt="" class="img-fluid">
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+				<div class="inner-column">
+					<h1>Bienvenid{{#xif expected='Femenino' expression='===' val=user.genero}}a{{else}}o{{/xif}} a
+						<span>{{config.Name}}</span>
+					</h1>
+					<h4>Pequeña historia</h4>
+					{{>promotion}}
+					<p>{{#each configtext}}{{littleStory}}{{/each}}</p>
+					<a class="btn btn-lg btn-circle btn-outline-new-white" href="/reservation">Inscripción</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- End About -->
+
+{{>qt}}
+{{/if}}
+
+<!-- Start Menu -->
+<div class="menu-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="special-menu text-center">
+					<div class="button-group filter-button-group">
+						<button class="active" data-filter="*">Todo</button>
+						{{#if category}}
+						{{#each category}}
+						<button data-filter=".{{name}}">{{name}}</button>
+						{{/each}}
+						{{/if}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row special-list">
+			{{#if products}}
+			{{#each products}}
+			<div class="col-lg-4 col-md-6 special-grid {{category}}">
+				<div class="gallery-single fix">
+					<img src="{{image}}" class="img-fluid" alt="Image">
+					<a href="product/{{id}}">
+						<div class="why-text">
+							<h4>{{name}}</h4>
+							<p>{{description}}</p>
+							<h5> ${{price}}</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+			{{/each}}
+			{{/if}}
+
+		</div>
+	</div>
+</div>
+<!-- End Menu -->
+
+<!-- Start QT -->
+<div class="qt-box qt-background">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 ml-auto mr-auto text-left">
+				<p class="lead ">CONTACTO</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End QT -->
+
+<!-- Start Reservation -->
+<div class="reservation-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="heading-title text-center">
+					<h2>Contacto</h2>
+					<p>{{#each configtext}}{{contactInformation}}{{/each}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 col-xs-12">
+				<div class="contact-block">
+					<form id="contactForm">
+						<div class="row">
+							<div class="col-md-6">
+								<h3>Escribenos</h3>
+								<div class="col-md-12">
+									<div class="form-group">
+										<textarea id="input_time" rows="7" type="text"
+											class="time form-control picker__input" required
+											data-error="Debe escribirnos tu razón de contacto"></textarea>
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<h3>Detalles del contacto</h3>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="text" class="form-control" id="name" name="name"
+											placeholder="Nombres y apellidos" required
+											data-error="Ingresa tu nombre completo.">
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="text" placeholder="Email" id="email" class="form-control"
+											name="email" required data-error="Ingresa un email valido.">
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="text" placeholder="Numero telefonico" id="phone"
+											class="form-control" name="phone" required
+											data-error="Ingresa un telefono.">
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="submit-button text-center">
+									<button class="btn btn-common" id="submit" type="submit">Contactar</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Reservation -->
+<!-- Start Contact info -->
+<div class="contact-imfo-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<i class="fa fa-volume-control-phone"></i>
+				<div class="overflow-hidden">
+					<h4>Telefono</h4>
+					<p class="lead">
+						{{config.Tel}}
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<i class="fa fa-envelope"></i>
+				<div class="overflow-hidden">
+					<h4>Email</h4>
+					<p class="lead">
+						{{config.Email}}
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<i class="fa fa-map-marker"></i>
+				<div class="overflow-hidden">
+					<h4>Dirección</h4>
+					<p class="lead">
+						{{config.Adress}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Contact info -->

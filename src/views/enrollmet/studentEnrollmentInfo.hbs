@@ -1,0 +1,420 @@
+<!-- Start Multiform HTML -->
+
+<style>
+    .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+
+    .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+
+    .account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+
+    .account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+
+    .account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #9fa8b9;
+    }
+
+    .account-settings .about {
+        margin: 2rem 0 0 0;
+        text-align: center;
+    }
+
+    .account-settings .about h5 {
+        margin: 0 0 15px 0;
+        color: #007ae1;
+    }
+
+    .account-settings .about p {
+        font-size: 0.825rem;
+    }
+
+    .form-control {
+        border: 1px solid #cfd1d8;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: .825rem;
+        background: #ffffff;
+        color: #2e323c;
+    }
+
+    .card {
+        background: #ffffff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+</style>
+<section class="multi_step_form">
+    <form action="/matricula/nuevo/estudiante" method="POST" id="msform" autocomplete="off">
+        <!-- Tittle -->
+        <div class="tittle">
+            <h2>{{pagename.title}} <b style="color: brown;">{{config.Name}}</b></h2>
+            <p>Donde el Amor es la base de la Educación</p>
+        </div>
+        <!-- progressbar -->
+        <ul id="progressbar">
+            <li class="active">Datos complementarios</li>
+            <li>Datos estudiante</li>
+            <li>Datos padre</li>
+            <li>Datos madre</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset>
+            <h3>¿Ya existen sus datos en nuestra base?</h3>
+            <h6>Por favor ingrese la siguiente informacion para validar si tu usuario se encuentra en nuestra base de datos
+            </h6>
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el nombre completo del estudiante</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalestudiante"
+                            title="Ver informacion estudiante" {{#if studentName}}{{else}}disabled{{/if}}><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="nombreEstudiante" id="nombreEstudiante" class="form-control"
+                            placeholder="Nombre completo del estudiante" value="{{message.studentName}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el numero de documento del estudiante</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalestudiante"
+                            title="Ver informacion estudiante" {{#if studentName}}{{else}}disabled{{/if}}><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="documentoEstudiante" id="documentoEstudiante" class="form-control"
+                            placeholder="Documento del estudiante" value="{{message.studentDocument}}" disabled>
+
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el numero de documento de la madre</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalmadre"
+                            title="Ver informacion madre" {{#if madreDocument}}{{else}}disabled{{/if}}><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="documentoMadre" class="form-control"
+                            placeholder="Documento de la madre" value="{{message.madreDocument}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <small class="help-block form-text">Por favor ingresa el numero de documento del padre</small>
+                    <div class="input-group">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalpadre"
+                            title="Ver informacion padre" {{#if padreDocument}}{{else}}disabled{{/if}}><i
+                                class="fa fa-eye"></i></button>
+                        <input type="text" name="documentoPadre" class="form-control" placeholder="Documento del padre"
+                            value="{{message.padreDocument}}" disabled>
+                    </div>
+                </div>
+            </div>
+            {{#if studentName}}
+            <div class="done_text">
+                <a href="#" class="don_icon"><i class="ion-android-done"></i></a>
+                <h6 style="color: red;">***EL ESTUDIANTE YA SE ENCUENTRA MATRICULADO EN NUESTRA INSTITUCIÓN ***
+                    <br>***Por favor ponerse en contacto con administración si ha habido un error***
+                </h6>
+            </div>
+            {{else}}
+            <div class="done_text">
+                <a href="#" class="don_icon"><i class="ion-android-done"></i></a>
+                <h6>En caso de que exista la información ingresada en nuestra base de datos, estos datos se agregaran
+                    automaticamente
+                    <br>Por favor darle al boton de continuar
+                </h6>
+            </div>
+            {{/if}}
+            <a href="/matricula" class="action-button btn previous_button">Cancelar</a>
+            <button type="button" class="next btn action-button" {{#if
+                studentName}}disabled{{else}}{{/if}}>Continuar</button>
+        </fieldset>
+        <fieldset>
+            {{>studentDataEnrollment}}
+            <button type="button" class="action-button previous previous_button">Atras</button>
+            <button type="button" class="next action-button">Continue</button>
+        </fieldset>
+        <fieldset>
+            {{#if padreDocument}}
+            {{>fatherDataEnrollmentDisabled}}
+            {{else}}
+            {{>fatherDataEnrollment}}
+            {{/if}}
+            <button type="button" class="action-button previous previous_button">Atrar</button>
+            <button type="button" class="next action-button">Continuar</button>
+        </fieldset>
+        <fieldset>
+            {{#if madreDocument}}
+            {{>motherDataEnrollmentDisabled}}
+            {{else}}
+            {{>motherDataEnrollment}}
+            {{/if}}
+            <button type="button" class="action-button previous previous_button">Atrar</button>
+            <button type="submit" class="action-button">Finalizar</button>
+        </fieldset>
+    </form>
+</section>
+
+<!-- Modal ESTUDIANTE -->
+<div class="modal fade" id="modalestudiante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{#each studentName}}
+                <div class="container">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-2 text-primary">Información de estudiante</h6>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Nombre completo</label>
+                                                <input type="text" class="form-control" id="fullName"
+                                                    placeholder="{{estudiante}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                            <div class="form-group">
+                                                <label for="niup">NIUP</label>
+                                                <input type="text" class="form-control" id="niup" placeholder="{{niup}}"
+                                                    disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                            <div class="form-group">
+                                                <label for="gradoMatricula">Grado matricula</label>
+                                                <input type="text" class="form-control" id="gradoMatricula"
+                                                    placeholder="{{gradomatricula}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="papa">Papa</label>
+                                                {{#each padre}}
+                                                <input type="text" class="form-control" id="papa"
+                                                    placeholder="{{name}} {{lastname}}" disabled>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="mama">Mama</label>
+                                                {{#each madre}}
+                                                <input type="text" class="form-control" id="mama"
+                                                    placeholder="{{name}} {{lastname}}" disabled>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                                            <div class="form-group">
+                                                <label for="estado">Estado</label>
+                                                {{#xif expected='0' expression='===' val=status}}<span
+                                                    class="badge badge-danger">Eliminado</span>{{/xif}}
+                                                {{#xif expected='1' expression='===' val=status}}<span
+                                                    class="badge badge-warning">Pendiente</span>{{/xif}}
+                                                {{#xif expected='2' expression='===' val=status}}<span
+                                                    class="badge badge-success">Matriculado</span>{{/xif}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">CERRAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal MADRE -->
+<div class="modal fade" id="modalmadre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{#each madreDocument}}
+                <div class="container">
+                    <div class="row gutters">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="account-settings">
+                                        <div class="user-profile">
+                                            <div class="user-avatar">
+                                                <img src="{{image}}" alt="{{name}} {{lastname}}">
+                                            </div>
+                                            <h5 class="user-name">{{name}} {{lastname}}</h5>
+                                            <h6 class="user-email">{{documento}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-2 text-primary">Información de contacto</h6>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Nombre completo</label>
+                                                <input type="text" class="form-control" id="fullName"
+                                                    placeholder="{{name}} {{lastname}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="eMail">Email</label>
+                                                <input type="email" class="form-control" id="eMail"
+                                                    placeholder="{{email}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="document">Documento</label>
+                                                <input type="text" class="form-control" id="document"
+                                                    placeholder="{{documento}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="website">Genero</label>
+                                                <input type="text" class="form-control" id="website"
+                                                    placeholder="{{genero}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">CERRAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal PADRE-->
+<div class="modal fade" id="modalpadre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{#each padreDocument}}
+                <div class="container">
+                    <div class="row gutters">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="account-settings">
+                                        <div class="user-profile">
+                                            <div class="user-avatar">
+                                                <img src="{{image}}" alt="{{name}} {{lastname}}">
+                                            </div>
+                                            <h5 class="user-name">{{name}} {{lastname}}</h5>
+                                            <h6 class="user-email">{{documento}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-2 text-primary">Información de contacto</h6>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Nombre completo</label>
+                                                <input type="text" class="form-control" id="fullName"
+                                                    placeholder="{{name}} {{lastname}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="eMail">Email</label>
+                                                <input type="email" class="form-control" id="eMail"
+                                                    placeholder="{{email}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="document">Dcumento</label>
+                                                <input type="text" class="form-control" id="document"
+                                                    placeholder="{{documento}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="website">Genero</label>
+                                                <input type="text" class="form-control" id="website"
+                                                    placeholder="{{genero}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">CERRAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

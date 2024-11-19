@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{pagename.title}} - Donde el Amor es la base de la Educación</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords"
+		content="envigado, jardin, prescolar, fantasias, infantil, niños, ninos, medellin, sabaneta, itagui, antillas, trianon, miprescolar">
+	<meta name="description"
+		content="Campestre - amplias zonas verdes y granja especial para que los niños integren su educación con la naturaleza">
+	<meta name="author" content="Janeth cristina ambra merida">
+
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link
+		href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic'
+		rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="../fantasiastyles/css/animate.css">
+
+	<link rel="stylesheet" href="../fantasiastyles/css/datatable.css">
+
+
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@4/default.css" rel="stylesheet">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css"
+		integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+</head>
+
+<style>
+	.{{pagename.name}} {
+		background: #FFF;
+		border-radius: 4px;
+	}
+</style>
+
+<body>
+	{{>updates}}
+	{{>modalsconfig}}
+	
+	<div class="sidebar">
+		<div class="logo-details">
+			<i class='bx bxl-c-plus-plus icon'></i>
+			<div class="logo_name">Dashboard</div>
+			<i class='bx bx-menu' id="btn"></i>
+		</div>
+
+		<ul class="nav-list">
+			<li>
+				<i class='bx bx-search' disabled></i>
+				<input type="text" placeholder="Search...">
+				<span class="tooltip">Search</span>
+			</li>
+			{{#if user}}
+			{{#xif expected='dacastamerd@gmail.com' expression='===' val=user.email}}
+			<li class="desarrollador">
+				<a href="/desarrollo/herramientas">
+					<i class="fas fa-cogs"></i>
+					<span class="links_name ">DESARROLLADOR</span>
+				</a>
+				<span class="tooltip">DESARROLLADOR</span>
+			</li>
+			{{/xif}}
+			{{#each rolUser}}
+			{{#each permissions}}
+
+			{{#xif2 expected='dashboard' expression='===' val=name expected2='true' val2=permission}}
+			<li class="dashboard">
+				<a href="/dashboard">
+					<i class="fas fa-columns"></i>
+					<span class="links_name ">Dashboard</span>
+				</a>
+				<span class="tooltip">Dashboard</span>
+			</li>
+			{{/xif2}}
+			{{#xif2 expected='usuarios' expression='===' val=name expected2='true' val2=permission}}
+			<li class="users">
+				<a href="/admin/users">
+					<i class="fas fa-users"></i>
+					<span class="links_name">Usuarios</span>
+				</a>
+				<span class="tooltip">Usuarios</span>
+			</li>
+			{{/xif2}}
+			{{#xif2 expected='estudiantes' expression='===' val=name expected2='true' val2=permission}}
+			<li class="students">
+				<a href="/admin/students">
+					<i class="fas fa-graduation-cap"></i>
+					<span class="links_name">Estudiantes</span>
+				</a>
+				<span class="tooltip">Estudiantes</span>
+			</li>
+			{{/xif2}}
+			{{#xif2 expected='categorias' expression='===' val=name expected2='true' val2=permission}}
+			<li class="category">
+				<a href="/admin/categories">
+					<i class="fas fa-book"></i>
+					<span class="links_name">Categorias</span>
+				</a>
+				<span class="tooltip">Categorias</span>
+			</li>
+			{{/xif2}}
+			{{#xif2 expected='configuracion' expression='===' val=name expected2='true' val2=permission}}
+			<li class="config">
+				<a href="/admin/config">
+					<i class='bx bx-cog'></i>
+					<span class="links_name">Configuración</span>
+				</a>
+				<span class="tooltip">Configuración</span>
+			</li>
+			{{/xif2}}
+			{{/each}}
+			{{/each}}
+			<li class="profile">
+
+				<div class="profile-details">
+					<img src="{{user.image}}" alt="profileImg">
+					<div class="name_job">
+						<div class="name">{{user.username}}</div>
+						<div class="job">{{#if rolUser}}
+							{{#each rolUser}}
+							{{name}}
+							{{/each}}
+							{{else}}
+							Indefinido
+							{{/if}}
+						</div>
+					</div>
+				</div>
+				<a href="/"><i class="far fa-hand-point-left" id="log_out_back"></i></a>
+				<a href="/logout"><i class='bx bx-log-out' id="log_out"></i></a>
+			</li>
+			{{else}}
+			<li class="active">
+				<a href="/">
+					<i class="far fa-hand-point-left"></i>
+					<span class="links_name ">Volver atras</span>
+				</a>
+				<span class="tooltip">retroceder</span>
+			</li>
+			<li class="signin">
+				<a href="/signin">
+					<i class="fas fa-sign-in-alt"></i>
+					<span class="links_name">Login</span>
+				</a>
+				<span class="tooltip">Login</span>
+			</li>
+			<li class="signup">
+				<a href="/signup">
+					<i class="fas fa-external-link-alt"></i>
+					<span class="links_name">Registrarse</span>
+				</a>
+				<span class="tooltip">Registrarse</span>
+			</li>
+
+			{{/if}}
+		</ul>
+
+	</div>
+
+	<section class="home-section">
+		{{>messages}}
+		{{{body}}}
+	</section>
+
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let closeBtn = document.querySelector("#btn");
+		let searchBtn = document.querySelector(".bx-search");
+
+		closeBtn.addEventListener("click", () => {
+			sidebar.classList.toggle("open");
+			menuBtnChange();//calling the function(optional)
+		});
+
+		searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+			sidebar.classList.toggle("open");
+			menuBtnChange(); //calling the function(optional)
+		});
+
+		// following are the code to change sidebar button(optional)
+		function menuBtnChange() {
+			if (sidebar.classList.contains("open")) {
+				closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+			} else {
+				closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+			}
+		}
+
+		function getScrollHeight(elm) {
+			var savedValue = elm.value
+			elm.value = ''
+			elm._baseScrollHeight = elm.scrollHeight
+			elm.value = savedValue
+		}
+
+		function onExpandableTextareaInput({ target: elm }) {
+			// make sure the input event originated from a textarea and it's desired to be auto-expandable
+			if (!elm.classList.contains('autoExpand') || !elm.nodeName == 'TEXTAREA') return
+
+			var minRows = elm.getAttribute('data-min-rows') | 0, rows;
+			!elm._baseScrollHeight && getScrollHeight(elm)
+
+			elm.rows = minRows
+			rows = Math.ceil((elm.scrollHeight - elm._baseScrollHeight) / 16)
+			elm.rows = minRows + rows
+		}
+
+
+		// global delegated event listener
+		document.addEventListener('input', onExpandableTextareaInput)
+
+	</script>
+	<script src="../fantasiastyles/js/jquery-3.2.1.min.js"></script>
+	<script src="../fantasiastyles/js/popper.min.js"></script>
+	<script src="../fantasiastyles/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.js"></script>
+	<script src="../fantasiastyles/js/customdashboard.js"></script>
+
+</body>
+
+</html>

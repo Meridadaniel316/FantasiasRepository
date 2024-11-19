@@ -1,0 +1,157 @@
+<h3>DATOS DE LA MADRE</h3>
+<h6>(En caso de que algun dato este desactualizado por favor ponerse en contacto con administración o actualizar los
+    datos iniciando sesion)</h6>
+<hr>
+{{#each madreDocument}}
+
+<div class="row">
+    <div class="col-sm">
+        <div class="form-group input-group row">
+            <div class="col-sm mt-1">
+
+                <h3><span style="color: red;">*</span> Nombres:</h3>
+                <input type="text" name="nameMother" value="{{name}}" class="form-control"
+                    placeholder="Ingrese los nombres" disabled>
+            </div>
+            <div class="col-sm mt-1">
+                <h3><span style="color: red;">*</span> Apellidos:</h3>
+                <input type="text" name="lastNameMother" value="{{lastname}}" class="form-control"
+                    placeholder="Ingrese los apellidos" disabled>
+            </div>
+        </div>
+        <div class="form-group input-group row">
+            <div class="col-lg-4 mt-1">
+                <h6><span style="color: red;">*</span> ¿La madre vive con el estudiante?</h6>
+                <div class="form-check">
+                    <div class="row">
+                        {{#if thePersonStaysWithTheSon}}
+                        <div class="col-lg-6 radio">
+                            <label for="theMotherStaysWithTheSon" class="form-check-label ">
+                                <input type="radio" id="theFatherStaysWithTheSon" name="theMotherStaysWithTheSon"
+                                    value=true class="form-check-input" checked disabled>SI
+                            </label>
+                        </div>
+                        <div class="col-lg-6 radio">
+                            <label for="theMotherStaysWithTheSon" class="form-check-label ">
+                                <input type="radio" id="theMotherStaysWithTheSon" name="theMotherStaysWithTheSon"
+                                    value=false class="form-check-input" disabled>NO
+                            </label>
+                        </div>
+                        {{else}}
+                        <div class="col-lg-6 radio">
+                            <label for="theMotherStaysWithTheSon" class="form-check-label ">
+                                <input type="radio" id="theFatherStaysWithTheSon" name="theMotherStaysWithTheSon"
+                                    value=true class="form-check-input" disabled>SI
+                            </label>
+                        </div>
+                        <div class="col-lg-6 radio">
+                            <label for="theMotherStaysWithTheSon" class="form-check-label ">
+                                <input type="radio" id="theMotherStaysWithTheSon" name="theMotherStaysWithTheSon"
+                                    value=false class="form-check-input" checked disabled>NO
+                            </label>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-1">
+                <h3> <span style="color: red;">*</span> Direccion:</h3>
+                <input name="directionMother" class="form-control" value="{{directionMother}}"
+                    placeholder="Ingrese la dirección de residencia" maxlength="10" type="text" disabled>
+            </div>
+            <div class="col-lg-4 mt-1">
+                <h3><span style="color: red;">*</span> Ocupacion:</h3>
+                <input type="text" name="occupationMother" value="{{occupationMother}}" placeholder="Ocupación laboral"
+                    class="form-control" disabled>
+            </div>
+        </div>
+        <div class="form-group input-group row">
+            <div class="col-lg-4 mt-1">
+                <h3><span style="color: red;">*</span> Genero:</h3>
+                <div class="form-group">
+                    <select class="product_select" name="generoMother" value="{{genero}}" id="inputGroupSelect02"
+                        disabled>
+                        {{#if genero}}
+                        <option disabled>Seleccionar un genero</option>
+                        <option {{#xif expected='Masculino' expression='==' val=genero}} selected {{/xif}}
+                            value="Masculino">Masculino</option>
+                        <option {{#xif expected='Femenino' expression='==' val=genero}} selected {{/xif}}
+                            value="Femenino">Femenino</option>
+                        <option {{#xif expected='Otro' expression='==' val=genero}} selected {{/xif}} value="Otro">Otro
+                        </option>
+
+                        {{else}}
+                        <option selected disabled>Seleccionar un genero:</option>
+                        <option {{#xif expected='Masculino' expression='==' val=genero}} selected {{/xif}}
+                            value="Masculino">Masculino</option>
+                        <option {{#xif expected='Femenino' expression='==' val=genero}} selected {{/xif}}
+                            value="Femenino">Femenino</option>
+                        <option {{#xif expected='Otro' expression='==' val=genero}} selected {{/xif}} value="Otro">Otro
+                        </option>
+                        {{/if}}
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-1">
+                <h3><span style="color: red;">*</span> Numero telefonico</h3>
+                <input name="telMother" class="form-control" value="{{celular}}"
+                    placeholder="Ingrese un numero telefonico" maxlength="10"
+                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text"
+                    disabled>
+            </div>
+            <div class="col-lg-4 mt-1">
+                <h3><span style="color: red;">*</span> Fecha de nacimiento</h3>
+                <input type="date" name="nacimientoMother" value="{{nacimiento}}" placeholder="Fecha de nacimiento"
+                    class="form-control" disabled>
+            </div>
+        </div>
+        <div class="form-group row input-group">
+            <div class="col-sm mt-1">
+                <h3><span style="color: red;">*</span> Tipo documento</h3>
+                <div class="form-group">
+                    <select class="product_select" name="tipodocumentotdocumentoMother" value="{{tipodocumento}}"
+                        id="tipodocumento" disabled>
+                        {{#if tipodocumento}}
+                        <option disabled>Seleccionar un documento</option>
+                        <option {{#xif expected='CC' expression='==' val=tipodocumento}} selected {{/xif}} value="CC">CC
+                        </option>
+                        <option {{#xif expected='TI' expression='==' val=tipodocumento}} selected {{/xif}} value="TI">TI
+                        </option>
+                        <option {{#xif expected='Pasaporte' expression='==' val=tipodocumento}} selected {{/xif}}
+                            value="Pasaporte">Pasaporte</option>
+
+                        {{else}}
+                        <option selected disabled>Seleccionar un documento</option>
+                        <option {{#xif expected='CC' expression='==' val=tipodocumento}} selected {{/xif}} value="CC">CC
+                        </option>
+                        <option {{#xif expected='TI' expression='==' val=tipodocumento}} selected {{/xif}} value="TI">TI
+                        </option>
+                        <option {{#xif expected='Pasaporte' expression='==' val=tipodocumento}} selected {{/xif}}
+                            value="Pasaporte">Pasaporte</option>
+
+                        {{/if}}
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm mt-1">
+                <h3><span style="color: red;">*</span> Documento</h3>
+                <input name="documentoMother" class="form-control" value="{{documento}}"
+                    placeholder="Ingrese un documento" type="text" disabled>
+            </div>
+            <div class="col-sm mt-1">
+                <h3><span style="color: red;">*</span> Correo electronico</h3>
+                <div class="form-group input-group">
+                    <input name="emailMother" id="emailMother" class="form-control" value="{{email}}"
+                        placeholder="Ingrese un correo electronico" type="email"  disabled>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <input name="documentoMother" id="documentoMother" class="form-control" value="{{documento}}"
+                    placeholder="{{documento}}" type="hidden">
+            </div>
+        </div>
+    </div>
+
+</div>
+{{/each}}
