@@ -6,13 +6,13 @@
                 <div class="radio">
                     <label for="studentStatus_New" class="form-check-label ">
                         <input type="radio" id="studentStatus_New" name="studentStatus" value=true
-                            class="form-check-input" checked>Niño nuevo
+                            class="form-check-input" checked required>Niño nuevo
                     </label>
                 </div>
                 <div class="radio">
                     <label for="studentStatus_continue" class="form-check-label ">
                         <input type="radio" id="studentStatus_continue" name="studentStatus" value=false
-                            class="form-check-input">Niño que continua
+                            class="form-check-input" required>Niño que continua
                     </label>
                 </div>
             </div>
@@ -25,25 +25,25 @@
                 <div class="radio">
                     <label for="gradeEnroll_Caminadores" class="form-check-label ">
                         <input type="radio" id="gradeEnroll_Caminadores" name="gradeEnroll" value="Caminadores"
-                            class="form-check-input">Caminadores
+                            class="form-check-input" required>Caminadores
                     </label>
                 </div>
                 <div class="radio">
                     <label for="gradeEnroll_Parvulos" class="form-check-label ">
                         <input type="radio" id="gradeEnroll_Parvulos" name="gradeEnroll" value="Parvulos"
-                            class="form-check-input">Parvulos
+                            class="form-check-input" required>Parvulos
                     </label>
                 </div>
                 <div class="radio">
                     <label for="gradeEnroll_PreJardin" class="form-check-label ">
                         <input type="radio" id="gradeEnroll_PreJardin" name="gradeEnroll" value="Pre-Jardin"
-                            class="form-check-input">Pre-Jardin
+                            class="form-check-input" required>Pre-Jardin
                     </label>
                 </div>
                 <div class="radio">
                     <label for="gradeEnroll_Transicion" class="form-check-label ">
                         <input type="radio" id="gradeEnroll_Transicion" name="gradeEnroll" value="Transicion"
-                            class="form-check-input">Transición
+                            class="form-check-input" required>Transición
                     </label>
                 </div>
             </div>
@@ -56,19 +56,19 @@
                 <div class="radio">
                     <label for="typeModality_Virtual" class="form-check-label ">
                         <input type="radio" id="typeModality_Virtual" name="typeModality" value="Virtual"
-                            class="form-check-input" disabled>Virtual
+                            class="form-check-input" disabled required>Virtual
                     </label>
                 </div>
                 <div class="radio">
                     <label for="typeModality_presencial" class="form-check-label ">
                         <input type="radio" id="typeModality_presencial" name="typeModality" value="Presencial"
-                            class="form-check-input" checked>Presencial
+                            class="form-check-input" checked required>Presencial
                     </label>
                 </div>
                 <div class="radio">
                     <label for="typeModality_alternancia" class="form-check-label ">
                         <input type="radio" id="typeModality_alternancia" name="typeModality" value="Alternancia"
-                            class="form-check-input" disabled>Alternancia
+                            class="form-check-input" disabled required>Alternancia
                     </label>
                 </div>
             </div>
@@ -81,19 +81,19 @@
                 <div class="radio">
                     <label for="workingDay_manana" class="form-check-label ">
                         <input type="radio" id="workingDay_manana" name="workingDay" value="Mañana"
-                            class="form-check-input">Mañana
+                            class="form-check-input" required>Mañana
                     </label>
                 </div>
                 <div class="radio">
                     <label for="workingDay_tarde" class="form-check-label ">
                         <input type="radio" id="workingDay_tarde" name="workingDay" value="Tarde"
-                            class="form-check-input">Tarde
+                            class="form-check-input" required>Tarde
                     </label>
                 </div>
                 <div class="radio">
                     <label for="workingDay_tiempoCompleto" class="form-check-label ">
                         <input type="radio" id="workingDay_tiempoCompleto" name="workingDay" value="Tiempo completo"
-                            class="form-check-input">Tiempo completo
+                            class="form-check-input" required>Tiempo completo
                     </label>
                 </div>
             </div>
@@ -146,12 +146,12 @@
     <div class="col-lg-6">
         <h3><span style="color: red;">*</span> Nombres estudiante:</h3>
         <input type="text" id="nameStudent" name="nameStudent" placeholder="Nombre(s) del estudiante"
-            class="form-control"><small class="form-text text-muted">Nombre(s) del estudiante</small>
+            class="form-control" required><small class="form-text text-muted">Nombre(s) del estudiante</small>
     </div>
     <div class="col-lg-6">
         <h3><span style="color: red;">*</span> Apellidos estudiante:</h3>
         <input type="text" id="lastNameStudent" name="lastNameStudent" placeholder="Apellidos(s) del estudiante"
-            class="form-control"><small class="form-text text-muted">Apellidos(s) del estudiante</small>
+            class="form-control" required><small class="form-text text-muted">Apellidos(s) del estudiante</small>
     </div>
 </div>
 <div class="row file_added py-4">
@@ -160,19 +160,19 @@
         <div class="form-check">
             <div class="radio">
                 <label for="gender_femenino" class="form-check-label ">
-                    <input type="radio" id="gender_femenino" name="gender" value="Femenino" class="form-check-input">Femenino
+                    <input type="radio" id="gender_femenino" name="gender" value="Femenino" class="form-check-input" required>Femenino
                 </label>
             </div>
             <div class="radio">
                 <label for="gender_masculino" class="form-check-label ">
-                    <input type="radio" id="gender_masculino" name="gender" value="Masculino" class="form-check-input">Masculino
+                    <input type="radio" id="gender_masculino" name="gender" value="Masculino" class="form-check-input" required>Masculino
                 </label>
             </div>
         </div>
     </div>
     <div class="col-lg-3">
         <h3><span style="color: red;">*</span> NUIP:</h3>
-        <input type="text" id="niup" name="niup" placeholder="NUIP" class="form-control"><small
+        <input type="text" id="niup" name="niup" placeholder="NUIP" class="form-control" required><small
             class="form-text text-muted">* El NUIP lo encuentras en el Registro Civil.</small>
     </div>
     <div class="col-lg-3">
@@ -183,25 +183,25 @@
     </div>
     <div class="col-lg-3">
         <h3><span style="color: red;">*</span> Pais de expedición:</h3>
-        <input type="text" id="countryFile" name="countryFile" placeholder="Pais Expediente" class="form-control"><small
+        <input type="text" id="countryFile" name="countryFile" placeholder="Pais Expediente" class="form-control" required><small
             class="form-text text-muted">Pais Expediente</small>
     </div>
 </div>
 <div class="row file_added">
     <div class="col-lg-6">
         <h3><span style="color: red;">*</span> Dirección:</h3>
-        <input type="text" id="direction" name="direction" placeholder="Dirección" class="form-control"><small
+        <input type="text" id="direction" name="direction" placeholder="Dirección" class="form-control" required><small
             class="form-text text-muted">Dirección</small>
     </div>
     <div class="col-lg-3">
         <h3><span style="color: red;">*</span> Barrio/Unidad:</h3>
         <input type="text" id="neighborhood" name="neighborhood" placeholder="Barrio / unidad"
-            class="form-control"><small class="form-text text-muted">Barrio / unidad</small>
+            class="form-control" required><small class="form-text text-muted">Barrio / unidad</small>
     </div>
     <div class="col-lg-3">
         <h3><span style="color: red;">*</span> Nº Casa o apartamento:</h3>
         <input type="text" id="apartmentHouseNumber" name="apartmentHouseNumber" placeholder="Nº Casa o apartamento"
-            class="form-control"><small class="form-text text-muted">Nº
+            class="form-control" required><small class="form-text text-muted">Nº
             Casa o apartamento</small>
     </div>
 </div>
@@ -211,19 +211,19 @@
         <div class="form-check">
             <div class="radio">
                 <label for="housingType_propia" class="form-check-label ">
-                    <input type="radio" id="housingType_propia" name="housingType" value="Propia" class="form-check-input">Propia
+                    <input type="radio" id="housingType_propia" name="housingType" value="Propia" class="form-check-input" required>Propia
                 </label>
             </div>
             <div class="radio">
                 <label for="housingType_arrendada" class="form-check-label ">
                     <input type="radio" id="housingType_arrendada" name="housingType" value="Arrendada"
-                        class="form-check-input">Arrendada
+                        class="form-check-input" required>Arrendada
                 </label>
             </div>
             <div class="radio">
                 <label for="housingType_familiar" class="form-check-label ">
                     <input type="radio" id="housingType_familiar" name="housingType" value="Familiar"
-                        class="form-check-input">Familiar
+                        class="form-check-input" required>Familiar
                 </label>
             </div>
         </div>
@@ -231,12 +231,12 @@
     <div class="col-lg-3">
         <h3><span style="color: red;">*</span> Municipio/Ciudad:</h3>
         <input type="text" id="municipality" name="municipality" placeholder="Municipio/Ciudad"
-            class="form-control"><small class="form-text text-muted">Municipio/Ciudad</small>
+            class="form-control" required><small class="form-text text-muted" required>Municipio/Ciudad</small>
     </div>
     <div class="col-lg-3">
         <h3><span style="color: red;">*</span> Departamento:</h3>
-        <input type="text" id="departament" name="departament" placeholder="Departamento" class="form-control"><small
-            class="form-text text-muted">Departamento</small>
+        <input type="text" id="departament" name="departament" placeholder="Departamento" class="form-control" required><small
+            class="form-text text-muted" required>Departamento</small>
     </div>
     <div class="col-lg-3">
         <h3>Tel fijo residencia:</h3>
@@ -247,12 +247,12 @@
 <div class="row file_added">
     <div class="col-lg-4">
         <h3><span style="color: red;">*</span> EPS:</h3>
-        <input type="text" id="eps" name="eps" placeholder="EPS" class="form-control"><small
+        <input type="text" id="eps" name="eps" placeholder="EPS" class="form-control" required><small
             class="form-text text-muted">EPS</small>
     </div>
     <div class="col-lg-4">
         <h3><span style="color: red;">*</span> Ips donde consulta:</h3>
-        <input type="text" id="queryIps" name="queryIps" placeholder="Ips donde consulta" class="form-control"><small
+        <input type="text" id="queryIps" name="queryIps" placeholder="Ips donde consulta" class="form-control" required><small
             class="form-text text-muted">Ips donde consulta</small>
     </div>
     <div class="col-lg-2">
@@ -260,22 +260,22 @@
         <div class="form-check">
             <div class="radio">
                 <label for="bloodType_O+" class="form-check-label ">
-                    <input type="radio" id="bloodType_O+" name="bloodType" value="o+" class="form-check-input">O+
+                    <input type="radio" id="bloodType_O+" name="bloodType" value="o+" class="form-check-input" required>O+
                 </label>
             </div>
             <div class="radio">
                 <label for="bloodType_O-" class="form-check-label ">
-                    <input type="radio" id="bloodType_O-" name="bloodType" value="o-" class="form-check-input">O-
+                    <input type="radio" id="bloodType_O-" name="bloodType" value="o-" class="form-check-input" required>O-
                 </label>
             </div>
             <div class="radio">
                 <label for="bloodType_A+" class="form-check-label ">
-                    <input type="radio" id="bloodType_A+" name="bloodType" value="a+" class="form-check-input">A+
+                    <input type="radio" id="bloodType_A+" name="bloodType" value="a+" class="form-check-input" required>A+
                 </label>
             </div>
             <div class="radio">
                 <label for="bloodType_A-" class="form-check-label ">
-                    <input type="radio" id="bloodType_A-" name="bloodType" value="a-" class="form-check-input">A-
+                    <input type="radio" id="bloodType_A-" name="bloodType" value="a-" class="form-check-input" required>A-
                 </label>
             </div>
         </div>
@@ -284,22 +284,22 @@
         <div class="form-check">
             <div class="radio">
                 <label for="bloodType_B-" class="form-check-label ">
-                    <input type="radio" id="bloodType_B-" name="bloodType" value="b-" class="form-check-input">B-
+                    <input type="radio" id="bloodType_B-" name="bloodType" value="b-" class="form-check-input" required>B-
                 </label>
             </div>
             <div class="radio">
                 <label for="bloodType_B+" class="form-check-label ">
-                    <input type="radio" id="bloodType_B+" name="bloodType" value="b+" class="form-check-input">B+
+                    <input type="radio" id="bloodType_B+" name="bloodType" value="b+" class="form-check-input" required>B+
                 </label>
             </div>
             <div class="radio">
                 <label for="bloodType_AB-" class="form-check-label ">
-                    <input type="radio" id="bloodType_AB-" name="bloodType" value="ab-" class="form-check-input">AB-
+                    <input type="radio" id="bloodType_AB-" name="bloodType" value="ab-" class="form-check-input" required>AB-
                 </label>
             </div>
             <div class="radio">
                 <label for="bloodType_AB+" class="form-check-label ">
-                    <input type="radio" id="bloodType_AB+" name="bloodType" value="ab+" class="form-check-input">AB+
+                    <input type="radio" id="bloodType_AB+" name="bloodType" value="ab+" class="form-check-input" required>AB+
                 </label>
             </div>
         </div>
@@ -308,16 +308,16 @@
 <div class="row file_added">
     <div class="col-lg-4">
         <h3><span style="color: red;">*</span> Pais de nacimiento</h3>
-        <input type="country" id="countryOfBirth" name="countryOfBirth" placeholder="Pais donde nacio el estudiante"
-            class="form-control"><small class="form-text text-muted">Pais donde nacio el estudiante</small>
+        <input type="text" id="countryOfBirth" name="countryOfBirth" placeholder="Pais donde nacio el estudiante"
+            class="form-control" required><small class="form-text text-muted">Pais donde nacio el estudiante</small>
     </div>
     <div class="col-lg-4">
         <h3><span style="color: red;">*</span> Ciudad de nacimiento</h3>
         <input type="text" id="cityOfBirth" name="cityOfBirth" placeholder="Ciudad donde nacio el estudiante"
-            class="form-control"><small class="form-text text-muted">Ciudad donde nacio el estudiante</small>
+            class="form-control" required><small class="form-text text-muted">Ciudad donde nacio el estudiante</small>
     </div>
     <div class="col-lg-4">
         <h3><span style="color: red;">*</span> Fecha de nacimiento</h3>
-        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" value="">
+        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" value="" required>
     </div>
 </div>

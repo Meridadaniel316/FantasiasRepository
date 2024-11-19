@@ -1,12 +1,11 @@
 (function($) {
     "use strict";  
-    
+
     //* Form js
-    function verificationForm(){
-        //jQuery time
-        var current_fs, next_fs, previous_fs; //fieldsets
-        var left, opacity, scale; //fieldset properties which we will animate
-        var animating; //flag to prevent quick multi-click glitches
+    function verificationForm() {
+        var current_fs, next_fs, previous_fs; // fieldsets
+        var left, opacity, scale; // fieldset properties which we will animate
+        var animating; // flag to prevent quick multi-click glitches
 
         $(".next").click(function () {
             if (animating) return false;
@@ -15,22 +14,74 @@
             current_fs = $(this).parent();
             next_fs = $(this).parent().next();
 
-            //activate next step on progressbar using the index of next_fs
+            // Limpiar cualquier estilo de error previo
+            $("input, select, textarea").removeClass("error");
+            $(".radio").removeClass("error");  // Limpiar las clases de error de los radios
+
+            // Validar los campos requeridos
+            var isValid = true;
+
+            // Validar campos de tipo input, select, textarea con required
+            current_fs.find("input[required], select[required], textarea[required]").each(function() {
+                // Para los select, verificar que no tenga valor vacío
+                if ($(this).is("select") && $(this).val() === "") {
+                    $(this).addClass("error"); // Agregar clase error
+                    isValid = false;
+                }
+                // Para los input tipo text, date, email, etc., verificar que no esté vacío
+                else if ($(this).val() === "" || $(this).val() === null) {
+                    $(this).addClass("error"); // Agregar clase error
+                    isValid = false;
+                }
+                // Validar los campos de tipo email con su formato
+                else if ($(this).is("input[type='email']") && !$(this)[0].validity.valid) {
+                    $(this).addClass("error"); // Agregar clase error si el email no es válido
+                    isValid = false;
+                }
+            });
+
+            // Validar los radio buttons requeridos
+            current_fs.find("input[type='radio'][required]").each(function() {
+                var name = $(this).attr('name');
+                // Verificar si algún radio button de ese grupo está seleccionado
+                if (!$("input[name='" + name + "']:checked").length) {
+                    // Si no está seleccionado ningún radio button, resaltar el grupo de radios
+                    $("input[name='" + name + "']").closest(".radio").addClass("error"); // Aplicar error al contenedor
+                    isValid = false;
+                }
+            });
+
+            // Si no es válido, mostrar alerta y detener el avance
+            if (!isValid) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "error",
+                    title: "Datos faltantes"
+                  });
+                animating = false;
+                return false; // No continuar al siguiente paso
+            }
+
+            // Si todo está bien, avanzar al siguiente paso
             $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-            //show the next fieldset
+            // Animar el paso siguiente
             next_fs.show();
-            //hide the current fieldset with style
             current_fs.animate({
                 opacity: 0
             }, {
                 step: function (now, mx) {
-                    //as the opacity of current_fs reduces to 0 - stored in "now"
-                    //1. scale current_fs down to 80%
                     scale = 1 - (1 - now) * 0.2;
-                    //2. bring next_fs from the right(50%)
                     left = (now * 50) + "%";
-                    //3. increase opacity of next_fs to 1 as it moves in
                     opacity = 1 - now;
                     current_fs.css({
                         'transform': 'scale(' + scale + ')',
@@ -46,7 +97,6 @@
                     current_fs.hide();
                     animating = false;
                 },
-                //this comes from the custom easing plugin
                 easing: 'easeInOutBack'
             });
         });
@@ -58,22 +108,17 @@
             current_fs = $(this).parent();
             previous_fs = $(this).parent().prev();
 
-            //de-activate current step on progressbar
+            // Deactivar el paso actual en el progressbar
             $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
-            //show the previous fieldset
+            // Mostrar el paso anterior
             previous_fs.show();
-            //hide the current fieldset with style
             current_fs.animate({
                 opacity: 0
             }, {
                 step: function (now, mx) {
-                    //as the opacity of current_fs reduces to 0 - stored in "now"
-                    //1. scale previous_fs from 80% to 100%
                     scale = 0.8 + (1 - now) * 0.2;
-                    //2. take current_fs to the right(50%) - from 0%
                     left = ((1 - now) * 50) + "%";
-                    //3. increase opacity of previous_fs to 1 as it moves in
                     opacity = 1 - now;
                     current_fs.css({
                         'left': left
@@ -88,31 +133,16 @@
                     current_fs.hide();
                     animating = false;
                 },
-                //this comes from the custom easing plugin
                 easing: 'easeInOutBack'
             });
         });
 
         $(".submit").click(function () {
             return false;
-        })
+        });
     }; 
     
-    //* Add Phone no select
-    function phoneNoselect(){
-        if ( $('#msform').length ){   
-            $("#phone").intlTelInput(); 
-            $("#phone").intlTelInput("setNumber", "+880"); 
-        };
-    }; 
-    //* Select js
-    function nice_Select(){
-        if ( $('.product_select').length ){ 
-            $('select').niceSelect();
-        };
-    }; 
-    /*Function Calls*/  
-    verificationForm ();
-    phoneNoselect ();
-    nice_Select ();
+    //* Function Calls  
+    verificationForm();
+
 })(jQuery);

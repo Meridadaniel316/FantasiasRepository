@@ -7,12 +7,12 @@
 
                 <h3><span style="color: red;">*</span> Nombres:</h3>
                 <input type="text" id="nameDaddy" name="nameDaddy" value="{{message.nameDaddy}}" class="form-control"
-                    placeholder="Ingrese los nombres">
+                    placeholder="Ingrese los nombres" required>
             </div>
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Apellidos:</h3>
                 <input type="text" id="lastNameDaddy" name="lastNameDaddy" value="{{message.lastNameDaddy}}" class="form-control"
-                    placeholder="Ingrese los apellidos">
+                    placeholder="Ingrese los apellidos" required>
             </div>
         </div>
         <div class="form-group input-group row">
@@ -23,13 +23,13 @@
                         <div class="col-lg-6 radio">
                             <label for="theDaddyStaysWithTheSon_YES" class="form-check-label ">
                                 <input type="radio" id="theDaddyStaysWithTheSon_YES" name="theDaddyStaysWithTheSon"
-                                    value=true class="form-check-input">SI
+                                    value=true class="form-check-input" required>SI
                             </label>
                         </div>
                         <div class="col-lg-6 radio">
                             <label for="theDaddyStaysWithTheSon_NO" class="form-check-label ">
                                 <input type="radio" id="theDaddyStaysWithTheSon_NO" name="theDaddyStaysWithTheSon"
-                                    value=false class="form-check-input">NO
+                                    value=false class="form-check-input" required>NO
                             </label>
                         </div>
                     </div>
@@ -38,19 +38,19 @@
             <div class="col-lg-4 mt-1">
                 <h3> <span style="color: red;">*</span> Direccion:</h3>
                 <input name="directionDaddy" id="directionDaddy" class="form-control" value="{{message.directionDaddy}}"
-                    placeholder="Ingrese la dirección de residencia" maxlength="10" type="text">
+                    placeholder="Ingrese la dirección de residencia" maxlength="10" type="text" required>
             </div>
             <div class="col-lg-4 mt-1">
                 <h3><span style="color: red;">*</span> Ocupacion:</h3>
                 <input type="text" id="occupationDaddy" name="occupationDaddy" value="{{message.occupationDaddy}}"
-                    placeholder="Ocupación laboral" class="form-control">
+                    placeholder="Ocupación laboral" class="form-control" required>
             </div>
         </div>
         <div class="form-group input-group row">
             <div class="col-lg-4 mt-1">
                 <h3><span style="color: red;">*</span> Genero:</h3>
                 <div class="form-group">
-                    <select class="product_select" name="generoDaddy" id="genderSelectDaddy">
+                    <select class="product_select" name="generoDaddy" id="genderSelectDaddy" required>
                         <option value="Masculino" selected>Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Otro">Otro</option>
@@ -61,19 +61,19 @@
                 <h3><span style="color: red;">*</span> Numero telefonico</h3>
                 <input name="telDaddy" id="telDaddy" class="form-control" value="{{message.telDaddy}}"
                     placeholder="Ingrese un numero telefonico" maxlength="10"
-                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text">
+                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" required>
             </div>
             <div class="col-lg-4 mt-1">
                 <h3><span style="color: red;">*</span> Fecha de nacimiento</h3>
                 <input type="date" id="nacimientoDaddy" name="nacimientoDaddy" value="{{message.nacimientoDaddy}}"
-                    placeholder="Fecha de nacimiento" class="form-control">
+                    placeholder="Fecha de nacimiento" class="form-control" required>
             </div>
         </div>
         <div class="form-group row input-group">
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Tipo documento</h3>
                 <div class="form-group">
-                    <select class="product_select" name="tipodocumentotdocumentoDaddy" id="tipodocumentoDaddy">
+                    <select class="product_select" name="tipodocumentotdocumentoDaddy" id="tipodocumentoDaddy" required>
                         <option value="CC" selected>Cedula de ciudadania</option>
                         <option value="TI">Tarjetad de identidad</option>
                         <option value="Pasaporte">Pasaporte</option>
@@ -84,13 +84,13 @@
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Documento</h3>
                 <input name="documentoDaddy" id="documentoDaddy" class="form-control" value="{{message.documentoDaddy}}"
-                    placeholder="Ingrese un documento" type="text">
+                    placeholder="Ingrese un documento" type="text" required>
             </div>
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Correo electronico</h3>
                 <div class="form-group input-group">
                     <input name="emailDaddy" id="emailDaddy" class="form-control" value="{{message.emailDaddy}}"
-                        placeholder="Ingrese un correo electronico" type="email" autocomplete="username">
+                        placeholder="Ingrese un correo electronico" type="email" required>
                 </div>
             </div>
         </div>

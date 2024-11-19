@@ -7,29 +7,29 @@
 
                 <h3><span style="color: red;">*</span> Nombres:</h3>
                 <input type="text" id="nameMother" name="nameMother" value="{{message.nameMother}}" class="form-control"
-                    placeholder="Ingrese los nombres">
+                    placeholder="Ingrese los nombres" required>
             </div>
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Apellidos:</h3>
                 <input type="text" id="lastNameMother" name="lastNameMother" value="{{message.lastNameMother}}" class="form-control"
-                    placeholder="Ingrese los apellidos">
+                    placeholder="Ingrese los apellidos" required>
             </div>
         </div>
         <div class="form-group input-group row">
             <div class="col-lg-4 mt-1">
-                <h6><span style="color: red;">*</span> ¿la madre vive con el estudiante?</h6>
+                <h6><span style="color: red;">*</span> ¿La madre vive con el estudiante?</h6>
                 <div class="form-check">
                     <div class="row">
                         <div class="col-lg-6 radio">
                             <label for="theMotherStaysWithTheSon_YES" class="form-check-label ">
                                 <input type="radio" id="theMotherStaysWithTheSon_YES" name="theMotherStaysWithTheSon"
-                                    value=true class="form-check-input">SI
+                                    value=true class="form-check-input" required>SI
                             </label>
                         </div>
                         <div class="col-lg-6 radio">
                             <label for="theMotherStaysWithTheSon_NO" class="form-check-label ">
                                 <input type="radio" id="theMotherStaysWithTheSon_NO" name="theMotherStaysWithTheSon"
-                                    value=false class="form-check-input">NO
+                                    value=false class="form-check-input" required>NO
                             </label>
                         </div>
                     </div>
@@ -38,19 +38,19 @@
             <div class="col-lg-4 mt-1">
                 <h3> <span style="color: red;">*</span> Direccion:</h3>
                 <input name="directionMother" id="directionMother" class="form-control" value="{{message.directionMother}}"
-                    placeholder="Ingrese la dirección de residencia" maxlength="10" type="text">
+                    placeholder="Ingrese la dirección de residencia" maxlength="10" type="text" required>
             </div>
             <div class="col-lg-4 mt-1">
                 <h3><span style="color: red;">*</span> Ocupacion:</h3>
                 <input type="text" id="occupationMother" name="occupationMother" value="{{message.occupationMother}}"
-                    placeholder="Ocupación laboral" class="form-control">
+                    placeholder="Ocupación laboral" class="form-control" required>
             </div>
         </div>
         <div class="form-group input-group row">
             <div class="col-lg-4 mt-1">
                 <h3><span style="color: red;">*</span> Genero:</h3>
                 <div class="form-group">
-                    <select class="product_select" name="generoMother" id="genderSelectMother">
+                    <select class="product_select" name="generoMother" id="genderSelectMother" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino" selected>Femenino</option>
                         <option value="Otro">Otro</option>
@@ -61,19 +61,19 @@
                 <h3><span style="color: red;">*</span> Numero telefonico</h3>
                 <input name="telMother" id="telMother" class="form-control" value="{{message.telMother}}"
                     placeholder="Ingrese un numero telefonico" maxlength="10"
-                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text">
+                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" required>
             </div>
             <div class="col-lg-4 mt-1">
                 <h3><span style="color: red;">*</span> Fecha de nacimiento</h3>
                 <input type="date" id="nacimientoMother" name="nacimientoMother" value="{{message.nacimientoMother}}"
-                    placeholder="Fecha de nacimiento" class="form-control">
+                    placeholder="Fecha de nacimiento" class="form-control" required>
             </div>
         </div>
         <div class="form-group row input-group">
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Tipo documento</h3>
                 <div class="form-group">
-                    <select class="product_select" name="tipodocumentotdocumentoMother" id="tipodocumentoMother">
+                    <select class="product_select" name="tipodocumentotdocumentoMother" id="tipodocumentoMother" required>
                         <option value="CC" selected>Cedula de ciudadania</option>
                         <option value="TI">Tarjetad de identidad</option>
                         <option value="Pasaporte">Pasaporte</option>
@@ -84,13 +84,13 @@
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Documento</h3>
                 <input name="documentoMother" id="documentoMother" class="form-control" value="{{message.documentoMother}}"
-                    placeholder="Ingrese un documento" type="text">
+                    placeholder="Ingrese un documento" type="text" required>
             </div>
             <div class="col-sm mt-1">
                 <h3><span style="color: red;">*</span> Correo electronico</h3>
                 <div class="form-group input-group">
                     <input name="emailMother" id="emailMother" class="form-control" value="{{message.emailMother}}"
-                        placeholder="Ingrese un correo electronico" type="email" autocomplete="username">
+                        placeholder="Ingrese un correo electronico" type="email" required>
                 </div>
             </div>
         </div>
